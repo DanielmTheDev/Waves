@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcggsmkl6ej4"]
+[gd_scene load_steps=7 format=3 uid="uid://bcggsmkl6ej4"]
 
 [ext_resource type="Script" uid="uid://bh2jcs82r0mjm" path="res://Code/Characters/Players/Player.cs" id="1_v0iea"]
 [ext_resource type="Resource" uid="uid://cgfnn7x08phqo" path="res://Resources/player_profile.tres" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://bscsk52s7o1en" path="res://Code/Characters/Projectiles/ProjectileShooter.cs" id="3_6t5aa"]
+[ext_resource type="Resource" uid="uid://dgx04lldjfvme" path="res://Resources/sandbox_projectile_profile.tres" id="4_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(50, 50)
@@ -11,11 +13,19 @@ size = Vector2(50, 50)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v0iea")
 _characterProfile = ExtResource("2_cvnsp")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v0iea")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(50, 50)
 texture = SubResource("PlaceholderTexture2D_lkv7d")
+metadata/_edit_lock_ = true
+
+[node name="ProjectileShooter" type="Node2D" parent="."]
+position = Vector2(31, 0)
+script = ExtResource("3_6t5aa")
+Profile = ExtResource("4_vgqql")
 metadata/_edit_lock_ = true
