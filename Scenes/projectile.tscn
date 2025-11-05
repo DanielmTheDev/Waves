@@ -6,6 +6,8 @@ size = Vector2(1, 1)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_at5ip"]
 
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
 gravity_scale = 0.0
 metadata/_edit_lock_ = true
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c87a5iidrcjsm"]
+
+[ext_resource type="Script" uid="uid://jay5elol12xf" path="res://Code/Enemies/SandboxEnemy.cs" id="1_28ecx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wjb5"]
+size = Vector2(19, 19)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_28ecx"]
+size = Vector2(2, 2)
+
+[node name="SandboxEnemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_28ecx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3wjb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = SubResource("PlaceholderTexture2D_28ecx")
+metadata/_edit_lock_ = true

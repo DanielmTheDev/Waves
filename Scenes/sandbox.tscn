@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl6bbfab7hk7j"]
+[gd_scene load_steps=3 format=3 uid="uid://dl6bbfab7hk7j"]
 
 [ext_resource type="PackedScene" uid="uid://bcggsmkl6ej4" path="res://Scenes/player.tscn" id="1_d7bho"]
+[ext_resource type="PackedScene" uid="uid://c87a5iidrcjsm" path="res://Scenes/sandbox_enemy.tscn" id="2_2b6ht"]
 
 [node name="Sandbox" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_d7bho")]
+position = Vector2(518, 285)
+
+[node name="SandboxEnemy" parent="." instance=ExtResource("2_2b6ht")]
+position = Vector2(171, 116)
+
+[node name="SandboxEnemy2" parent="." instance=ExtResource("2_2b6ht")]
+position = Vector2(581, 504)
+
+[node name="SandboxEnemy3" parent="." instance=ExtResource("2_2b6ht")]
+position = Vector2(542, 83)
+
+[node name="SandboxEnemy4" parent="." instance=ExtResource("2_2b6ht")]
+position = Vector2(173, 374)
+
+[node name="SandboxEnemy5" parent="." instance=ExtResource("2_2b6ht")]
+position = Vector2(843, 248)
