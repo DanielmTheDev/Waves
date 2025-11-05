@@ -1,16 +1,17 @@
 using Godot;
 using Waves.Code.Characters.Core;
+using Waves.Code.Characters.Resources;
 
 namespace Waves.Code.Characters.Players;
 
 public partial class Player : CharacterBody2D
 {
-    [Export] public float MoveSpeed = 200f;
+    [Export] private CharacterProfile _characterProfile;
 
     public override void _PhysicsProcess(double delta)
     {
         var inputDir = ReadInput();
-        Velocity = MovementLogic.ComputeVelocity(inputDir, MoveSpeed);
+        Velocity = MovementLogic.ComputeVelocity(inputDir, _characterProfile.MoveSpeed);
         MoveAndSlide();
 
         var mousePos = GetGlobalMousePosition();

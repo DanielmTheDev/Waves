@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcggsmkl6ej4"]
+[gd_scene load_steps=5 format=3 uid="uid://bcggsmkl6ej4"]
 
 [ext_resource type="Script" uid="uid://bh2jcs82r0mjm" path="res://Code/Characters/Players/Player.cs" id="1_v0iea"]
+[ext_resource type="Resource" uid="uid://cgfnn7x08phqo" path="res://Resources/player_profile.tres" id="2_cvnsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(50, 50)
@@ -9,6 +10,7 @@ size = Vector2(50, 50)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v0iea")
+_characterProfile = ExtResource("2_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v0iea")
