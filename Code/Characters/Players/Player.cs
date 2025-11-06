@@ -19,7 +19,7 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        ProcessInput();
+        ProcessMovement();
         ProcessAttack();
     }
 
@@ -30,7 +30,7 @@ public partial class Player : CharacterBody2D
         _projectileShooter.TryShootAt(GetGlobalMousePosition());
     }
 
-    private void ProcessInput()
+    private void ProcessMovement()
     {
         var inputDir = ReadInput();
         Velocity = MovementLogic.ComputeVelocity(inputDir, _characterProfile.MoveSpeed);
