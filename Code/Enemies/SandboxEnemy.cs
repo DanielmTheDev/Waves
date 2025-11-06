@@ -5,7 +5,6 @@ namespace Waves.Code.Enemies;
 
 public partial class SandboxEnemy : CharacterBody2D
 {
-
     [Export] public float MoveSpeed = 120f;
     private Area2D _area2D => GetNode<Area2D>(UniqueNames.Area2d);
     private Node2D _target;

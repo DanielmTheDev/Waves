@@ -1,5 +1,6 @@
 using Godot;
 using Waves.Code.Characters.Core;
+using Waves.Code.Characters.Projectiles;
 using Waves.Code.Characters.Resources;
 using Waves.Code.Constants;
 
@@ -8,11 +9,28 @@ namespace Waves.Code.Characters.Players;
 public partial class Player : CharacterBody2D
 {
     [Export] private CharacterProfile _characterProfile;
+    private ProjectileShooter _projectileShooter;
 
     public override void _Ready()
-        => AddToGroup(GroupNames.Player);
+    {
+        _projectileShooter = GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);
+        AddToGroup(GroupNames.Player);
+    }
 
     public override void _PhysicsProcess(double delta)
+    {
+        ProcessInput();
+        ProcessAttack();
+    }
+
+    private void ProcessAttack()
+    {
+        if (!Input.IsActionJustPressed("shoot"))
+            return;
+        _projectileShooter.TryShootAt(GetGlobalMousePosition());
+    }
+
+    private void ProcessInput()
     {
         var inputDir = ReadInput();
         Velocity = MovementLogic.ComputeVelocity(inputDir, _characterProfile.MoveSpeed);

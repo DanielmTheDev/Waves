@@ -1,41 +1,35 @@
 using Godot;
 using Waves.Code.Characters.Core;
+using Waves.Code.Characters.Projectiles.Resources;
 
 namespace Waves.Code.Characters.Projectiles;
 
 public partial class ProjectileShooter : Node2D
 {
-    [Export] public Resources.ProjectileProfile Profile;
+    [Export] public ProjectileProfile Profile;
+
     private Cooldown _cooldown;
 
     public override void _Ready()
         => _cooldown = new(Profile.CooldownSeconds);
 
-    public override void _PhysicsProcess(double delta)
+    public void TryShootAt(Vector2 targetPosition)
     {
-        if (!Input.IsActionJustPressed("shoot"))
-            return;
 
-        var now = (float)EngineTimeInSeconds();
+        var now = Time.GetTicksMsec() / 1000f;
         if (!_cooldown.CanShoot(now))
             return;
 
-        ShootTowardsMouse();
+        Shoot(targetPosition);
         _cooldown.RecordShot(now);
     }
 
-    private void ShootTowardsMouse()
+    private void Shoot(Vector2 targetPosition)
     {
-        var projectile = Profile.ProjectileScene.Instantiate<RigidBody2D>();
-        var world = GetTree().CurrentScene;
-        world.AddChild(projectile);
-        var origin = GlobalPosition;
-        var mouse = GetGlobalMousePosition();
-        var dir = (mouse - origin).Normalized();
-        projectile.GlobalPosition = origin;
-        projectile.LinearVelocity = dir * Profile.ProjectileSpeed;
+        var proj = Profile.ProjectileScene.Instantiate<RigidBody2D>();
+        GetTree().CurrentScene.AddChild(proj);
+        var dir = (targetPosition - GlobalPosition).Normalized();
+        proj.GlobalPosition = GlobalPosition;
+        proj.LinearVelocity = dir * Profile.ProjectileSpeed;
     }
-
-    private static double EngineTimeInSeconds()
-        => Time.GetTicksMsec() / 1000.0;
 }
