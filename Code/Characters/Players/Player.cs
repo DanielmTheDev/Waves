@@ -1,12 +1,16 @@
 using Godot;
 using Waves.Code.Characters.Core;
 using Waves.Code.Characters.Resources;
+using Waves.Code.Constants;
 
 namespace Waves.Code.Characters.Players;
 
 public partial class Player : CharacterBody2D
 {
     [Export] private CharacterProfile _characterProfile;
+
+    public override void _Ready()
+        => AddToGroup(GroupNames.Player);
 
     public override void _PhysicsProcess(double delta)
     {
