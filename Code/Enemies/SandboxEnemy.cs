@@ -1,7 +1,7 @@
 using Godot;
-using Waves.Code.Characters.Projectiles;
 using Waves.Code.Common;
 using Waves.Code.Constants;
+using Waves.Code.Players.Projectiles;
 
 namespace Waves.Code.Enemies;
 
@@ -15,6 +15,7 @@ public partial class SandboxEnemy : CharacterBody2D
 
     public override void _Ready()
     {
+        AddToGroup(GroupNames.Enemy);
         _target = GetTree().GetFirstNodeInGroup(GroupNames.Player) as Node2D;
         _area2D.BodyEntered += OnBodyEntered;
         _area2D.AreaEntered += OnBodyEntered;

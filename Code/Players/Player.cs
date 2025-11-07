@@ -1,10 +1,10 @@
 using Godot;
-using Waves.Code.Characters.Projectiles;
-using Waves.Code.Characters.Resources;
 using Waves.Code.Common;
 using Waves.Code.Constants;
+using Waves.Code.Players.Projectiles;
+using Waves.Code.Players.Resources;
 
-namespace Waves.Code.Characters.Players;
+namespace Waves.Code.Players;
 
 public partial class Player : CharacterBody2D
 {
@@ -41,7 +41,7 @@ public partial class Player : CharacterBody2D
         Rotation = GlobalPosition.LookRotation(GetGlobalMousePosition());
     }
 
-    private void OnBodyEntered(Node2D body)
+    private static void OnBodyEntered(Node2D body)
         => body.QueueFree();
 
     private static Vector2 ReadInput()

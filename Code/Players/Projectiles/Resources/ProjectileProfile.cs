@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Waves.Code.Characters.Projectiles.Resources;
+namespace Waves.Code.Players.Projectiles.Resources;
 
 [GlobalClass]
 public sealed partial class ProjectileProfile : Resource

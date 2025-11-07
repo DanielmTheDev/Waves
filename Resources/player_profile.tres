@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterProfile" load_steps=2 format=3 uid="uid://cgfnn7x08phqo"]
 
-[ext_resource type="Script" uid="uid://ngn1amoxx24e" path="res://Code/Characters/Resources/CharacterProfile.cs" id="1_srhvr"]
+[ext_resource type="Script" uid="uid://ngn1amoxx24e" path="res://Code/Players/Resources/CharacterProfile.cs" id="1_srhvr"]
 
 [resource]
 script = ExtResource("1_srhvr")

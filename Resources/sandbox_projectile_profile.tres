@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProjectileProfile" load_steps=3 format=3 uid="uid://dgx04lldjfvme"]
 
 [ext_resource type="PackedScene" uid="uid://bbgsp37yd35yn" path="res://Scenes/projectile.tscn" id="1_4cyrx"]
-[ext_resource type="Script" uid="uid://dtprvfig0ea4b" path="res://Code/Characters/Projectiles/Resources/ProjectileProfile.cs" id="1_ietrr"]
+[ext_resource type="Script" uid="uid://dtprvfig0ea4b" path="res://Code/Players/Projectiles/Resources/ProjectileProfile.cs" id="1_ietrr"]
 
 [resource]
 script = ExtResource("1_ietrr")

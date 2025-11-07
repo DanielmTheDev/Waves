@@ -1,4 +1,4 @@
-namespace Waves.Code.Characters.Core;
+namespace Waves.Code.Players.Core;
 
 public sealed class Cooldown
 {

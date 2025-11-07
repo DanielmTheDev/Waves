@@ -1,4 +1,4 @@
-namespace Waves.Code.Characters.Players;
+namespace Waves.Code.Players;
 
 public static class UniqueNames
 {

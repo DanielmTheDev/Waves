@@ -1,8 +1,8 @@
 using Godot;
-using Waves.Code.Characters.Core;
-using Waves.Code.Characters.Projectiles.Resources;
+using Waves.Code.Players.Core;
+using Waves.Code.Players.Projectiles.Resources;
 
-namespace Waves.Code.Characters.Projectiles;
+namespace Waves.Code.Players.Projectiles;
 
 public partial class ProjectileShooter : Node2D
 {
