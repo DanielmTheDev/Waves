@@ -17,6 +17,7 @@ shape = SubResource("RectangleShape2D_at5ip")
 metadata/_edit_lock_ = true
 
 [node name="Projectile" type="Sprite2D" parent="."]
+self_modulate = Color(0.32110974, 0.14275622, 0.9999849, 1)
 scale = Vector2(10, 10)
 texture = SubResource("PlaceholderTexture2D_at5ip")
 metadata/_edit_lock_ = true
