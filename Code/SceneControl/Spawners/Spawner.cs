@@ -13,7 +13,7 @@ public partial class Spawner : Node
     [Export] private SpawnerProfile Profile { get; set; }
     [Export] private PackedScene EnemyScene { get; set; }
     private Timer _timer;
-    private RandomNumberGenerator rng = new();
+    private RandomNumberGenerator _rng = new();
 
     public override void _Ready()
     {
@@ -25,14 +25,27 @@ public partial class Spawner : Node
 
     private void SpawnEnemies()
     {
-        var spawnPoints = new Stack<SpawnPoint>(GetTree()
+        var spawnPoints = SpawnPoints();
+        var numberOfEnemiesToSpawn = NrEnemiesToSpawn(spawnPoints);
+        SpawnEnemies(numberOfEnemiesToSpawn, spawnPoints);
+    }
+
+    private Stack<SpawnPoint> SpawnPoints()
+        => new(GetTree()
             .GetNodesInGroup(GroupNames.SpawnPoint)
             .OfType<SpawnPoint>()
-            .OrderBy(_ => rng.Randi()));
+            .OrderBy(_ => _rng.Randi()));
 
-        var numberOfEnemiesToSpawn = Profile.EnemyCountPerCycle > spawnPoints.Count
+    private int NrEnemiesToSpawn(Stack<SpawnPoint> spawnPoints)
+    {
+        var maxNumberOfEnemiesToSpawn = Profile.EnemyCountPerCycle > spawnPoints.Count
             ? spawnPoints.Count
             : Profile.EnemyCountPerCycle;
+        return int.Min(maxNumberOfEnemiesToSpawn, DifferenceToTotalEnemies());
+    }
+
+    private void SpawnEnemies(int numberOfEnemiesToSpawn, Stack<SpawnPoint> spawnPoints)
+    {
         for (var i = 0; i < numberOfEnemiesToSpawn; i++)
         {
             var spawnPoint = spawnPoints.Pop();
@@ -41,4 +54,7 @@ public partial class Spawner : Node
             enemy.GlobalPosition = spawnPoint.GlobalPosition;
         }
     }
+
+    private int DifferenceToTotalEnemies()
+        => Profile.MaxTotalEnemies - GetTree().GetNodeCountInGroup(GroupNames.Enemy);
 }
