@@ -21,6 +21,7 @@ script = ExtResource("1_28ecx")
 Profile = ExtResource("2_3jfgx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.8274412, 0.13885698, 0.19452173, 1)
 scale = Vector2(10, 10)
 texture = SubResource("PlaceholderTexture2D_28ecx")
 metadata/_edit_lock_ = true
