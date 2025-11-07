@@ -27,6 +27,8 @@ public partial class ProjectileShooter : Node2D
     private void Shoot(Vector2 targetPosition)
     {
         var proj = Profile.ProjectileScene.Instantiate<RigidBody2D>();
+        proj.CollisionLayer = Profile.CollisionLayer;
+        proj.CollisionMask  = Profile.CollisionMask;
         GetTree().CurrentScene.AddChild(proj);
         var dir = (targetPosition - GlobalPosition).Normalized();
         proj.GlobalPosition = GlobalPosition;

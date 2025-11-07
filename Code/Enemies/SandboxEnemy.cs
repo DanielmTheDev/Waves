@@ -22,9 +22,6 @@ public partial class SandboxEnemy : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (_target == null)
-            return;
-
         var toTarget = _target.GlobalPosition - GlobalPosition;
         var dist = toTarget.Length();
 

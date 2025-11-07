@@ -7,5 +7,7 @@
 script = ExtResource("1_i1mvx")
 ProjectileScene = ExtResource("1_e6wob")
 ProjectileSpeed = 200.0
-CooldownSeconds = 10.0
+CooldownSeconds = 1.0
+CollisionLayer = 8
+CollisionMask = 1
 metadata/_custom_type_script = "uid://dtprvfig0ea4b"

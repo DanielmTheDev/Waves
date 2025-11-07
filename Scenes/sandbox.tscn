@@ -10,15 +10,3 @@ position = Vector2(518, 285)
 
 [node name="SandboxEnemy" parent="." instance=ExtResource("2_2b6ht")]
 position = Vector2(171, 116)
-
-[node name="SandboxEnemy2" parent="." instance=ExtResource("2_2b6ht")]
-position = Vector2(126, 389)
-
-[node name="SandboxEnemy3" parent="." instance=ExtResource("2_2b6ht")]
-position = Vector2(542, 83)
-
-[node name="SandboxEnemy4" parent="." instance=ExtResource("2_2b6ht")]
-position = Vector2(173, 374)
-
-[node name="SandboxEnemy5" parent="." instance=ExtResource("2_2b6ht")]
-position = Vector2(843, 248)
