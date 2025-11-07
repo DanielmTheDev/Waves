@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://qx6tgbmrxb0l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvf7y"]
+bg_color = Color(0.35059628, 0.68917, 0.37981454, 1)
+
+[node name="UserInterface" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+theme_override_styles/fill = SubResource("StyleBoxFlat_uvf7y")
+max_value = 3.0
+step = 1.0
+value = 3.0
+show_percentage = false
