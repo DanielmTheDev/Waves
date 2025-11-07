@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c87a5iidrcjsm"]
+[gd_scene load_steps=7 format=3 uid="uid://c87a5iidrcjsm"]
 
 [ext_resource type="Script" uid="uid://jay5elol12xf" path="res://Code/Enemies/SandboxEnemy.cs" id="1_28ecx"]
 [ext_resource type="Script" uid="uid://bscsk52s7o1en" path="res://Code/Characters/Projectiles/ProjectileShooter.cs" id="2_2785b"]
@@ -7,12 +7,14 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_28ecx"]
 size = Vector2(2, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2785b"]
+size = Vector2(199.99998, 199.99998)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wjb5"]
-size = Vector2(19, 19)
 
 [node name="SandboxEnemy" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_28ecx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,8 +23,9 @@ texture = SubResource("PlaceholderTexture2D_28ecx")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.9802322e-07, 2.9802322e-07)
 scale = Vector2(0.1, 0.1)
-shape = SubResource("RectangleShape2D_3wjb5")
+shape = SubResource("RectangleShape2D_2785b")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true

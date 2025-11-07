@@ -12,7 +12,7 @@ position = Vector2(518, 285)
 position = Vector2(171, 116)
 
 [node name="SandboxEnemy2" parent="." instance=ExtResource("2_2b6ht")]
-position = Vector2(519, 356)
+position = Vector2(126, 389)
 
 [node name="SandboxEnemy3" parent="." instance=ExtResource("2_2b6ht")]
 position = Vector2(542, 83)
