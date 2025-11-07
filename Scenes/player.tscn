@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcggsmkl6ej4"]
+[gd_scene load_steps=8 format=3 uid="uid://bcggsmkl6ej4"]
 
 [ext_resource type="Script" uid="uid://bh2jcs82r0mjm" path="res://Code/Characters/Players/Player.cs" id="1_v0iea"]
 [ext_resource type="Resource" uid="uid://cgfnn7x08phqo" path="res://Resources/player_profile.tres" id="2_cvnsp"]
@@ -9,6 +9,9 @@
 size = Vector2(50, 50)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lkv7d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
+size = Vector2(52, 52)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 10
@@ -30,4 +33,13 @@ unique_name_in_owner = true
 position = Vector2(31, 0)
 script = ExtResource("3_6t5aa")
 Profile = ExtResource("4_vgqql")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 8
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vgqql")
 metadata/_edit_lock_ = true

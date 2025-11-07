@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c87a5iidrcjsm"]
+[gd_scene load_steps=8 format=3 uid="uid://c87a5iidrcjsm"]
 
 [ext_resource type="Script" uid="uid://jay5elol12xf" path="res://Code/Enemies/SandboxEnemy.cs" id="1_28ecx"]
+[ext_resource type="Resource" uid="uid://gg34sk2ujwni" path="res://Resources/sandbox_enemy_profile.tres" id="2_3jfgx"]
 [ext_resource type="Script" uid="uid://bscsk52s7o1en" path="res://Code/Characters/Projectiles/ProjectileShooter.cs" id="2_2785b"]
 [ext_resource type="Resource" uid="uid://b7fwfnpqasx14" path="res://Resources/enemy_projectile_profile.tres" id="3_2785b"]
 
@@ -17,6 +18,7 @@ size = Vector2(22, 22)
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_28ecx")
+Profile = ExtResource("2_3jfgx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(10, 10)

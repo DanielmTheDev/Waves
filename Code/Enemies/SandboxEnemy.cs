@@ -7,8 +7,7 @@ namespace Waves.Code.Enemies;
 
 public partial class SandboxEnemy : CharacterBody2D
 {
-    [Export] public float MoveSpeed = 120f;
-    [Export] public float ShootRange = 250f;
+    [Export] public SandboxEnemyProfile Profile { get; set; }
 
     private Area2D _area2D => GetNode<Area2D>(UniqueNames.Area2d);
     private ProjectileShooter _shooter => GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);
@@ -24,7 +23,7 @@ public partial class SandboxEnemy : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         Rotation = GlobalPosition.LookRotation(_target.GlobalPosition);
-        if (GlobalPosition.DistanceTo(_target.GlobalPosition) > ShootRange)
+        if (GlobalPosition.DistanceTo(_target.GlobalPosition) > Profile.ShootRange)
         {
             MoveTowardsTarget();
         }
@@ -37,7 +36,7 @@ public partial class SandboxEnemy : CharacterBody2D
     private void MoveTowardsTarget()
     {
         var dir = GlobalPosition.NormalizedTo(_target.GlobalPosition);
-        Velocity = dir * MoveSpeed;
+        Velocity = dir * Profile.MoveSpeed;
         MoveAndSlide();
     }
 

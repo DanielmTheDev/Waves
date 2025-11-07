@@ -10,3 +10,4 @@ position = Vector2(518, 285)
 
 [node name="SandboxEnemy" parent="." instance=ExtResource("2_2b6ht")]
 position = Vector2(171, 116)
+metadata/_edit_lock_ = true

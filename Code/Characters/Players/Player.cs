@@ -10,10 +10,14 @@ public partial class Player : CharacterBody2D
 {
     [Export] private CharacterProfile _characterProfile;
     private ProjectileShooter _projectileShooter;
+    private Area2D _area2D;
 
     public override void _Ready()
     {
         _projectileShooter = GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);
+        _area2D = GetNode<Area2D>(UniqueNames.Area2d);
+        _area2D.BodyEntered += OnBodyEntered;
+        _area2D.AreaEntered += OnBodyEntered;
         AddToGroup(GroupNames.Player);
     }
 
@@ -36,6 +40,9 @@ public partial class Player : CharacterBody2D
         MoveAndSlide();
         Rotation = GlobalPosition.LookRotation(GetGlobalMousePosition());
     }
+
+    private void OnBodyEntered(Node2D body)
+        => body.QueueFree();
 
     private static Vector2 ReadInput()
         => Input.GetVector("move_left", "move_right", "move_up", "move_down");
