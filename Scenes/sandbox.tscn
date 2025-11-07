@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bcggsmkl6ej4" path="res://Scenes/player.tscn" id="1_d7bho"]
 [ext_resource type="PackedScene" uid="uid://c87a5iidrcjsm" path="res://Scenes/sandbox_enemy.tscn" id="2_2b6ht"]
-[ext_resource type="Script" uid="uid://d35jkvkwvmn4n" path="res://Code/SceneControl/Spawner.cs" id="3_y0mvb"]
+[ext_resource type="PackedScene" uid="uid://cvh7h2acqvyu0" path="res://Scenes/spawner.tscn" id="3_y0mvb"]
 
 [node name="Sandbox" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -14,5 +14,4 @@ position = Vector2(518, 285)
 position = Vector2(171, 116)
 metadata/_edit_lock_ = true
 
-[node name="Spawner" type="Node" parent="."]
-script = ExtResource("3_y0mvb")
+[node name="Spawner" parent="." instance=ExtResource("3_y0mvb")]

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SpawnerProfile" load_steps=2 format=3 uid="uid://b462myrioru6t"]
+
+[ext_resource type="Script" uid="uid://c42po186ppjrf" path="res://Code/SceneControl/Resources/SpawnerProfile.cs" id="1_5dp8c"]
+
+[resource]
+script = ExtResource("1_5dp8c")
+metadata/_custom_type_script = "uid://c42po186ppjrf"
