@@ -1,7 +1,7 @@
 using Godot;
-using Waves.Code.Characters.Core;
 using Waves.Code.Characters.Projectiles;
 using Waves.Code.Characters.Resources;
+using Waves.Code.Common;
 using Waves.Code.Constants;
 
 namespace Waves.Code.Characters.Players;
@@ -32,12 +32,9 @@ public partial class Player : CharacterBody2D
 
     private void ProcessMovement()
     {
-        var inputDir = ReadInput();
-        Velocity = MovementLogic.ComputeVelocity(inputDir, _characterProfile.MoveSpeed);
+        Velocity = ReadInput().Velocity(_characterProfile.MoveSpeed);
         MoveAndSlide();
-
-        var mousePos = GetGlobalMousePosition();
-        Rotation = AimLogic.ComputeLookRotation(GlobalPosition, mousePos);
+        Rotation = GlobalPosition.LookRotation(GetGlobalMousePosition());
     }
 
     private static Vector2 ReadInput()

@@ -1,5 +1,6 @@
 using Godot;
 using Waves.Code.Characters.Projectiles;
+using Waves.Code.Common;
 using Waves.Code.Constants;
 
 namespace Waves.Code.Enemies;
@@ -22,22 +23,29 @@ public partial class SandboxEnemy : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        var toTarget = _target.GlobalPosition - GlobalPosition;
-        var dist = toTarget.Length();
-
-        if (dist > ShootRange)
+        Rotation = GlobalPosition.LookRotation(_target.GlobalPosition);
+        if (GlobalPosition.DistanceTo(_target.GlobalPosition) > ShootRange)
         {
-            var dir = toTarget.Normalized();
-            Velocity = dir * MoveSpeed;
-            MoveAndSlide();
+            MoveTowardsTarget();
         }
         else
         {
-            Velocity = Vector2.Zero;
-            MoveAndSlide();
-
-            _shooter.TryShootAt(_target.GlobalPosition);
+            TryShoot();
         }
+    }
+
+    private void MoveTowardsTarget()
+    {
+        var dir = GlobalPosition.NormalizedTo(_target.GlobalPosition);
+        Velocity = dir * MoveSpeed;
+        MoveAndSlide();
+    }
+
+    private void TryShoot()
+    {
+        Velocity = Vector2.Zero;
+        MoveAndSlide();
+        _shooter.TryShootAt(_target.GlobalPosition);
     }
 
     private void OnBodyEntered(Node2D body)
