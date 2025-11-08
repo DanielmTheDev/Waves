@@ -10,14 +10,8 @@ public sealed partial class EventBus : Node
     public static EventBus Instance { get; private set; }
 
     public override void _EnterTree()
-    {
-        GD.Print("Initializing Eventbus");
-        Instance = this;
-    }
+        => Instance = this;
 
     public void EmitHitPointChanged(int current, int max)
-    {
-        GD.Print("Emitting health changed in bus");
-        EmitSignalHitPointChanged(current, max);
-    }
+        => EmitSignalHitPointChanged(current, max);
 }
