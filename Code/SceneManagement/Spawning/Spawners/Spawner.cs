@@ -3,6 +3,7 @@ using System.Linq;
 using Godot;
 using Waves.Code.Constants;
 using Waves.Code.Enemies;
+using Waves.Code.Enemies.Ranged;
 using Waves.Code.SceneManagement.Spawning.Resources;
 using Waves.Code.SceneManagement.Spawning.SpawnPoints;
 
@@ -49,7 +50,7 @@ public partial class Spawner : Node
         for (var i = 0; i < numberOfEnemiesToSpawn; i++)
         {
             var spawnPoint = spawnPoints.Pop();
-            var enemy = EnemyScene.Instantiate<SandboxEnemy>();
+            var enemy = EnemyScene.Instantiate<RangedEnemy>();
             GetTree().CurrentScene.AddChild(enemy);
             enemy.GlobalPosition = spawnPoint.GlobalPosition;
         }

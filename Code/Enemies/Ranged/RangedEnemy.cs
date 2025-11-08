@@ -3,11 +3,11 @@ using Waves.Code.Common;
 using Waves.Code.Constants;
 using Waves.Code.Players.Projectiles;
 
-namespace Waves.Code.Enemies;
+namespace Waves.Code.Enemies.Ranged;
 
-public partial class SandboxEnemy : CharacterBody2D
+public partial class RangedEnemy : CharacterBody2D
 {
-    [Export] public SandboxEnemyProfile Profile { get; set; }
+    [Export] public RangedEnemyProfile Profile { get; set; }
 
     private Area2D _area2D => GetNode<Area2D>(UniqueNames.Area2d);
     private ProjectileShooter _shooter => GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);

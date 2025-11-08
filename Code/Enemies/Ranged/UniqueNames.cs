@@ -1,4 +1,4 @@
-namespace Waves.Code.Enemies;
+namespace Waves.Code.Enemies.Ranged;
 
 public static class UniqueNames
 {

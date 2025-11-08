@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c87a5iidrcjsm"]
 
-[ext_resource type="Script" uid="uid://jay5elol12xf" path="res://Code/Enemies/SandboxEnemy.cs" id="1_28ecx"]
-[ext_resource type="Resource" uid="uid://gg34sk2ujwni" path="res://Resources/sandbox_enemy_profile.tres" id="2_3jfgx"]
-[ext_resource type="Script" uid="uid://bscsk52s7o1en" path="res://Code/Players/Projectiles/ProjectileShooter.cs" id="2_2785b"]
-[ext_resource type="Resource" uid="uid://b7fwfnpqasx14" path="res://Resources/enemy_projectile_profile.tres" id="3_2785b"]
+[ext_resource type="Script" uid="uid://jay5elol12xf" path="res://Code/Enemies/Ranged/RangedEnemy.cs" id="1_1qm41"]
+[ext_resource type="Resource" uid="uid://gg34sk2ujwni" path="res://Resources/sandbox_enemy_profile.tres" id="2_f5pa5"]
+[ext_resource type="Script" uid="uid://bscsk52s7o1en" path="res://Code/Players/Projectiles/ProjectileShooter.cs" id="3_bvp7b"]
+[ext_resource type="Resource" uid="uid://b7fwfnpqasx14" path="res://Resources/enemy_projectile_profile.tres" id="4_lcaim"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_28ecx"]
 size = Vector2(2, 2)
@@ -14,11 +14,11 @@ size = Vector2(199.99998, 199.99998)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wjb5"]
 size = Vector2(22, 22)
 
-[node name="SandboxEnemy" type="CharacterBody2D"]
+[node name="RangedEnemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_28ecx")
-Profile = ExtResource("2_3jfgx")
+script = ExtResource("1_1qm41")
+Profile = ExtResource("2_f5pa5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.8274412, 0.13885698, 0.19452173, 1)
@@ -44,5 +44,5 @@ metadata/_edit_lock_ = true
 
 [node name="ProjectileShooter" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("2_2785b")
-Profile = ExtResource("3_2785b")
+script = ExtResource("3_bvp7b")
+Profile = ExtResource("4_lcaim")
