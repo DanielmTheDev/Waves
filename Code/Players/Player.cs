@@ -1,24 +1,29 @@
 using Godot;
 using Waves.Code.Common;
 using Waves.Code.Constants;
+using Waves.Code.Infrastructure;
 using Waves.Code.Players.Projectiles;
 using Waves.Code.Players.Resources;
 
 namespace Waves.Code.Players;
 
+public record Hitpoints(int Current, int Max);
+
 public partial class Player : CharacterBody2D
 {
-    [Export] private CharacterProfile _characterProfile;
+    [Export] public CharacterProfile CharacterProfile;
     private ProjectileShooter _projectileShooter;
     private Area2D _area2D;
+    private Hitpoints _hitPoints;
 
     public override void _Ready()
     {
+        AddToGroup(GroupNames.Player);
+        _hitPoints = new(CharacterProfile.HitPoints, CharacterProfile.HitPoints);
         _projectileShooter = GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);
         _area2D = GetNode<Area2D>(UniqueNames.Area2d);
         _area2D.BodyEntered += OnBodyEntered;
         _area2D.AreaEntered += OnBodyEntered;
-        AddToGroup(GroupNames.Player);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -36,13 +41,17 @@ public partial class Player : CharacterBody2D
 
     private void ProcessMovement()
     {
-        Velocity = ReadInput().Velocity(_characterProfile.MoveSpeed);
+        Velocity = ReadInput().Velocity(CharacterProfile.MoveSpeed);
         MoveAndSlide();
         Rotation = GlobalPosition.LookRotation(GetGlobalMousePosition());
     }
 
-    private static void OnBodyEntered(Node2D body)
-        => body.QueueFree();
+    private void OnBodyEntered(Node2D body)
+    {
+        _hitPoints = _hitPoints with { Current = _hitPoints.Current - 1 };
+        EventBus.Instance.EmitHitPointChanged(_hitPoints.Current, _hitPoints.Max);
+        body.QueueFree();
+    }
 
     private static Vector2 ReadInput()
         => Input.GetVector("move_left", "move_right", "move_up", "move_down");

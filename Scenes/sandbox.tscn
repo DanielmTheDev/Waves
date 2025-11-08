@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl6bbfab7hk7j"]
+[gd_scene load_steps=6 format=3 uid="uid://dl6bbfab7hk7j"]
 
 [ext_resource type="PackedScene" uid="uid://bcggsmkl6ej4" path="res://Scenes/player.tscn" id="1_d7bho"]
+[ext_resource type="Resource" uid="uid://cgfnn7x08phqo" path="res://Resources/player_profile.tres" id="2_1cu7a"]
 [ext_resource type="PackedScene" uid="uid://cvh7h2acqvyu0" path="res://Scenes/spawner.tscn" id="3_y0mvb"]
 [ext_resource type="PackedScene" uid="uid://qx6tgbmrxb0l" path="res://Scenes/user_interface.tscn" id="4_1cu7a"]
 [ext_resource type="PackedScene" uid="uid://ghnvypf4ygnh" path="res://Scenes/spawn_point.tscn" id="4_s2tkr"]
@@ -10,6 +11,9 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_d7bho")]
 position = Vector2(518, 285)
+CharacterProfile = ExtResource("2_1cu7a")
+
+[node name="UserInterface" parent="." instance=ExtResource("4_1cu7a")]
 
 [node name="Spawning" type="Node" parent="."]
 
@@ -30,5 +34,3 @@ metadata/_edit_lock_ = true
 [node name="SpawnPoint4" parent="Spawning" instance=ExtResource("4_s2tkr")]
 position = Vector2(117, 76)
 metadata/_edit_lock_ = true
-
-[node name="UserInterface" parent="." instance=ExtResource("4_1cu7a")]
