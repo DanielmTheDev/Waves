@@ -3,10 +3,10 @@ using System.Linq;
 using Godot;
 using Waves.Code.Constants;
 using Waves.Code.Enemies;
-using Waves.Code.SceneControl.Resources;
-using Waves.Code.SceneControl.SpawnPoints;
+using Waves.Code.SceneManagement.Spawning.Resources;
+using Waves.Code.SceneManagement.Spawning.SpawnPoints;
 
-namespace Waves.Code.SceneControl.Spawners;
+namespace Waves.Code.SceneManagement.Spawning.Spawners;
 
 public partial class Spawner : Node
 {

@@ -1,4 +1,4 @@
-namespace Waves.Code.SceneControl.Spawners;
+namespace Waves.Code.SceneManagement.Spawning.Spawners;
 
 public static class UniqueNames
 {

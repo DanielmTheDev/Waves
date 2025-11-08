@@ -1,7 +1,7 @@
 using Godot;
 using Waves.Code.Constants;
 
-namespace Waves.Code.SceneControl.SpawnPoints;
+namespace Waves.Code.SceneManagement.Spawning.SpawnPoints;
 
 public partial class SpawnPoint : Node2D
 {

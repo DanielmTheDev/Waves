@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Waves.Code.SceneControl.Resources;
+namespace Waves.Code.SceneManagement.Spawning.Resources;
 
 [GlobalClass]
 public sealed partial class SpawnerProfile : Resource

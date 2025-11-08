@@ -15,6 +15,8 @@ CharacterProfile = ExtResource("2_1cu7a")
 
 [node name="UserInterface" parent="." instance=ExtResource("4_1cu7a")]
 
+[node name="SceneController" type="Node" parent="."]
+
 [node name="Spawning" type="Node" parent="."]
 
 [node name="Spawner" parent="Spawning" instance=ExtResource("3_y0mvb")]
