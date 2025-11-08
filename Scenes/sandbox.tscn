@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl6bbfab7hk7j"]
+[gd_scene load_steps=7 format=3 uid="uid://dl6bbfab7hk7j"]
 
 [ext_resource type="PackedScene" uid="uid://bcggsmkl6ej4" path="res://Scenes/player.tscn" id="1_d7bho"]
 [ext_resource type="Resource" uid="uid://cgfnn7x08phqo" path="res://Resources/player_profile.tres" id="2_1cu7a"]
 [ext_resource type="PackedScene" uid="uid://cvh7h2acqvyu0" path="res://Scenes/spawner.tscn" id="3_y0mvb"]
 [ext_resource type="PackedScene" uid="uid://qx6tgbmrxb0l" path="res://Scenes/user_interface.tscn" id="4_1cu7a"]
+[ext_resource type="Script" uid="uid://c4hjehi3cwcuy" path="res://Code/SceneManagement/SceneControllers/SceneController.cs" id="4_koc8j"]
 [ext_resource type="PackedScene" uid="uid://ghnvypf4ygnh" path="res://Scenes/spawn_point.tscn" id="4_s2tkr"]
 
 [node name="Sandbox" type="Node2D"]
@@ -14,8 +15,10 @@ position = Vector2(518, 285)
 CharacterProfile = ExtResource("2_1cu7a")
 
 [node name="UserInterface" parent="." instance=ExtResource("4_1cu7a")]
+process_mode = 4
 
 [node name="SceneController" type="Node" parent="."]
+script = ExtResource("4_koc8j")
 
 [node name="Spawning" type="Node" parent="."]
 
