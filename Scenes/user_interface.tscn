@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://qx6tgbmrxb0l"]
+[gd_scene load_steps=3 format=3 uid="uid://qx6tgbmrxb0l"]
+
+[ext_resource type="Script" uid="uid://0inyg66d2n33" path="res://Code/UserInterfaces/UserInterface.cs" id="1_62x38"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvf7y"]
 bg_color = Color(0.35059628, 0.68917, 0.37981454, 1)
 
 [node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_62x38")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -22,6 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 6

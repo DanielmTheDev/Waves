@@ -6,4 +6,5 @@ namespace Waves.Code.Players.Resources;
 public sealed partial class CharacterProfile : Resource
 {
      [Export] public float MoveSpeed { get; set; } = 200f;
+     [Export] public int HitPoints { get; set; } = 3;
 }
