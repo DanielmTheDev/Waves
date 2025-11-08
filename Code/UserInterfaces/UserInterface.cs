@@ -9,10 +9,12 @@ namespace Waves.Code.UserInterfaces;
 public partial class UserInterface : CanvasLayer
 {
     private ProgressBar _progressBar;
+    private RichTextLabel _diedLabel;
 
     public override void _Ready()
     {
         _progressBar = GetNode<ProgressBar>(UniqueNames.ProgressBar);
+        _diedLabel = GetNode<RichTextLabel>(UniqueNames.DiedLabel);
         SetInitialHitPoints();
         EventBus.Instance.HitPointChanged += OnHitPointChanged;
     }
@@ -28,5 +30,6 @@ public partial class UserInterface : CanvasLayer
     {
         _progressBar.Value = current;
         _progressBar.MaxValue = max;
+        _diedLabel.Visible = current <= 0;
     }
 }
