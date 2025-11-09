@@ -7,20 +7,21 @@ using Waves.Code.Players.Resources;
 
 namespace Waves.Code.Players;
 
-public record Hitpoints(int Current, int Max);
-
 public partial class Player : CharacterBody2D
 {
     [Export] public CharacterProfile CharacterProfile;
     private ProjectileShooter _projectileShooter;
     private Area2D _area2D;
-    private Hitpoints _hitPoints;
+    private HitPoints _hitPoints;
+    private Vector2 _lastDirection;
+    private AnimationPlayer _animationPlayer;
 
     public override void _Ready()
     {
         AddToGroup(GroupNames.Player);
         _hitPoints = new(CharacterProfile.HitPoints, CharacterProfile.HitPoints);
         _projectileShooter = GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);
+        _animationPlayer = GetNode<AnimationPlayer>(UniqueNames.AnimationPlayer);
         _area2D = GetNode<Area2D>(UniqueNames.Area2d);
         _area2D.BodyEntered += OnBodyEntered;
         _area2D.AreaEntered += OnBodyEntered;
@@ -29,6 +30,7 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         ProcessMovement();
+        ProcessAnimation();
         ProcessAttack();
     }
 
@@ -51,6 +53,40 @@ public partial class Player : CharacterBody2D
         EventBus.Instance.EmitHitPointChanged(_hitPoints.Current, _hitPoints.Max);
         body.QueueFree();
     }
+
+    private void ProcessAnimation()
+    {
+        var direction = ReadInput();
+        if (direction != Vector2.Zero)
+        {
+            _lastDirection = direction;
+            PlayIdleAnimation(_lastDirection);
+        }
+    }
+
+    private void PlayIdleAnimation(Vector2 direction)
+    {
+        var animationName = GetAnimationName("idle", direction);
+        if (_animationPlayer.CurrentAnimation != animationName)
+        {
+            _animationPlayer.Play(animationName);
+        }
+    }
+
+    private static string GetAnimationName(string type, Vector2 direction)
+        => direction.Y > 0
+                ? $"{type}_front"
+                : $"{type}_back";
+
+    // use this once all directions are implemented. maybe extract
+    // private static string GetAnimationName(string type, Vector2 direction)
+    //     => Mathf.Abs(direction.Y) > Mathf.Abs(direction.X)
+    //         ? direction.Y > 0
+    //             ? $"{type}_front"
+    //             : $"{type}_back"
+    //         : direction.X > 0
+    //             ? $"{type}_right"
+    //             : $"{type}_left";
 
     private static Vector2 ReadInput()
         => Input.GetVector("move_left", "move_right", "move_up", "move_down");

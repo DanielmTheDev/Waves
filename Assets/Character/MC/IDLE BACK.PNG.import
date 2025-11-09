@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ber4fjcqrgyso"
-path="res://.godot/imported/IDLE SPRITE.PNG-87ae71c51f000078fe345cfe33e608c6.ctex"
+uid="uid://exbsyxpwugba"
+path="res://.godot/imported/IDLE BACK.PNG-bd1293a9da5716c675e52361916e6a3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character/MC/IDLE SPRITE.PNG"
-dest_files=["res://.godot/imported/IDLE SPRITE.PNG-87ae71c51f000078fe345cfe33e608c6.ctex"]
+source_file="res://Assets/Character/MC/IDLE BACK.PNG"
+dest_files=["res://.godot/imported/IDLE BACK.PNG-bd1293a9da5716c675e52361916e6a3c.ctex"]
 
 [params]
 
