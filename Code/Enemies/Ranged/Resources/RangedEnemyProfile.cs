@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Waves.Code.Enemies.Ranged;
+namespace Waves.Code.Enemies.Ranged.Resources;
 
 [GlobalClass]
 public sealed partial class RangedEnemyProfile : Resource

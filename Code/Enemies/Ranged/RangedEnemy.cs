@@ -7,7 +7,7 @@ namespace Waves.Code.Enemies.Ranged;
 
 public partial class RangedEnemy : CharacterBody2D
 {
-    [Export] public RangedEnemyProfile Profile { get; set; }
+    [Export] public Resources.RangedEnemyProfile Profile { get; set; }
 
     private Area2D _area2D => GetNode<Area2D>(UniqueNames.Area2d);
     private ProjectileShooter _shooter => GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);
