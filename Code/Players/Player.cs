@@ -43,7 +43,6 @@ public partial class Player : CharacterBody2D
     {
         Velocity = ReadInput().Velocity(CharacterProfile.MoveSpeed);
         MoveAndSlide();
-        Rotation = GlobalPosition.LookRotation(GetGlobalMousePosition());
     }
 
     private void OnBodyEntered(Node2D body)
