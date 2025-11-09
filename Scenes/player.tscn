@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcggsmkl6ej4"]
+[gd_scene load_steps=7 format=3 uid="uid://bcggsmkl6ej4"]
 
 [ext_resource type="Script" uid="uid://bh2jcs82r0mjm" path="res://Code/Players/Player.cs" id="1_v0iea"]
-[ext_resource type="Resource" uid="uid://cgfnn7x08phqo" path="res://Resources/player_profile.tres" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://bscsk52s7o1en" path="res://Code/Players/Projectiles/ProjectileShooter.cs" id="3_6t5aa"]
 [ext_resource type="Resource" uid="uid://dgx04lldjfvme" path="res://Resources/sandbox_projectile_profile.tres" id="4_vgqql"]
 
@@ -14,9 +13,8 @@ size = Vector2(50, 50)
 size = Vector2(52, 52)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 10
+collision_mask = 26
 script = ExtResource("1_v0iea")
-_characterProfile = ExtResource("2_cvnsp")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
