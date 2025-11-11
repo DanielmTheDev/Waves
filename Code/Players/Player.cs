@@ -73,20 +73,15 @@ public partial class Player : CharacterBody2D
         }
     }
 
-    private static string GetAnimationName(string type, Vector2 direction)
-        => direction.Y > 0
-                ? $"{type}_front"
-                : $"{type}_back";
 
-    // use this once all directions are implemented. maybe extract
-    // private static string GetAnimationName(string type, Vector2 direction)
-    //     => Mathf.Abs(direction.Y) > Mathf.Abs(direction.X)
-    //         ? direction.Y > 0
-    //             ? $"{type}_front"
-    //             : $"{type}_back"
-    //         : direction.X > 0
-    //             ? $"{type}_right"
-    //             : $"{type}_left";
+    private static string GetAnimationName(string type, Vector2 direction)
+        => Mathf.Abs(direction.Y) > Mathf.Abs(direction.X)
+            ? direction.Y > 0
+                ? $"{type}_front"
+                : $"{type}_back"
+            : direction.X > 0
+                ? $"{type}_right"
+                : $"{type}_left";
 
     private static Vector2 ReadInput()
         => Input.GetVector("move_left", "move_right", "move_up", "move_down");
