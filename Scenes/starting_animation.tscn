@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://q1hff05ivf6o"]
+
+[ext_resource type="Script" uid="uid://ma1hk5m5gs0x" path="res://Code/SplashScreens/StartingAnimation.cs" id="1_17j41"]
+[ext_resource type="VideoStream" uid="uid://db3ko8is1sx7o" path="res://Assets/Menu/SPLASHSCREEN FINAL.ogv" id="1_diojf"]
+[ext_resource type="PackedScene" uid="uid://dl6bbfab7hk7j" path="res://Scenes/sandbox.tscn" id="2_faivh"]
+[ext_resource type="AudioStream" uid="uid://c82s4oyghewen" path="res://Assets/Menu/Mechanical Keyboard.mp3" id="2_swcwh"]
+
+[node name="StartingAnimation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_17j41")
+_nextScene = ExtResource("2_faivh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_diojf")
+autoplay = true
+expand = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_swcwh")
+autoplay = true
