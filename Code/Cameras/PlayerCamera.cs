@@ -16,13 +16,8 @@ public partial class PlayerCamera : Camera2D
     }
 
     public override void _Process(double delta)
-    {
-        ApplyFollow();
-    }
+        => ApplyFollow();
 
     private void ApplyFollow()
-    {
-        if (Player == null) return;
-        GlobalPosition = Player.GlobalPosition;
-    }
+        => GlobalPosition = Player.GlobalPosition;
 }
