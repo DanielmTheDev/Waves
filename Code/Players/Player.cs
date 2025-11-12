@@ -73,15 +73,24 @@ public partial class Player : CharacterBody2D
         }
     }
 
-
     private static string GetAnimationName(string type, Vector2 direction)
-        => Mathf.Abs(direction.Y) > Mathf.Abs(direction.X)
-            ? direction.Y > 0
-                ? $"{type}_front"
-                : $"{type}_back"
-            : direction.X > 0
-                ? $"{type}_right"
-                : $"{type}_left";
+    {
+        var angle = direction.Angle(); // -PI .. PI, 0 = right, PI/2 = down, -PI/2 = up
+        var octant = Mathf.FloorToInt((angle + Mathf.Pi / 8f) / (Mathf.Pi / 4f)) & 7;
+
+        return octant switch
+        {
+            0 => $"{type}_right",         // →
+            1 => $"{type}_front_right",   // ↘
+            2 => $"{type}_front",         // ↓
+            3 => $"{type}_front_left",    // ↙
+            4 => $"{type}_left",          // ←
+            5 => $"{type}_back_left",     // ↖
+            6 => $"{type}_back",          // ↑
+            7 => $"{type}_back_right",    // ↗
+            _ => $"{type}_front"
+        };
+    }
 
     private static Vector2 ReadInput()
         => Input.GetVector("move_left", "move_right", "move_up", "move_down");
