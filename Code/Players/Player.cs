@@ -75,7 +75,7 @@ public partial class Player : CharacterBody2D
 
     private static string GetAnimationName(string type, Vector2 direction)
     {
-        var angle = direction.Angle(); // -PI .. PI, 0 = right, PI/2 = down, -PI/2 = up
+        var angle = direction.Angle();
         var octant = Mathf.FloorToInt((angle + Mathf.Pi / 8f) / (Mathf.Pi / 4f)) & 7;
 
         return octant switch
