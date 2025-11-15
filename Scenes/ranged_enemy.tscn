@@ -8,8 +8,9 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_28ecx"]
 size = Vector2(2, 2)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2785b"]
-size = Vector2(199.99998, 199.99998)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qm41"]
+radius = 99.99999
+height = 199.99998
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wjb5"]
 size = Vector2(22, 22)
@@ -29,8 +30,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.9802322e-07, 2.9802322e-07)
 scale = Vector2(0.1, 0.1)
-shape = SubResource("RectangleShape2D_2785b")
-metadata/_edit_lock_ = true
+shape = SubResource("CapsuleShape2D_1qm41")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -46,3 +46,8 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 script = ExtResource("3_bvp7b")
 Profile = ExtResource("4_lcaim")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+path_desired_distance = 1.0
+path_postprocessing = 1

@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_5dp8c")
+SpawnCycle = 0.1
+EnemyCountPerCycle = 1
+MaxTotalEnemies = 1
 metadata/_custom_type_script = "uid://c42po186ppjrf"

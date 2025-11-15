@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="SandboxEnemyProfile" load_steps=2 format=3 uid="uid://gg34sk2ujwni"]
+[gd_resource type="Resource" script_class="RangedEnemyProfile" load_steps=2 format=3 uid="uid://gg34sk2ujwni"]
 
 [ext_resource type="Script" uid="uid://cxc13yfj44fdb" path="res://Code/Enemies/Ranged/Resources/RangedEnemyProfile.cs" id="1_5kdxp"]
 
 [resource]
 script = ExtResource("1_5kdxp")
+ShootRange = 10.0
 metadata/_custom_type_script = "uid://cxc13yfj44fdb"
