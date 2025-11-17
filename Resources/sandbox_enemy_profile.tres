@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_5kdxp")
-ShootRange = 10.0
+ShootRange = 100.0
 metadata/_custom_type_script = "uid://cxc13yfj44fdb"
