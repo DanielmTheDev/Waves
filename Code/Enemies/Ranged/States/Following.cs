@@ -34,8 +34,8 @@ public class Following : State
 
         UpdateAgentTarget();
         LookTowardsNextTarget();
-        GetVelocityToNextTarget(delta);
-        _character.Velocity = GetVelocityToNextTarget(delta);
+        GetVelocityToNextTarget();
+        _character.Velocity = GetVelocityToNextTarget();
         _character.MoveAndSlide();
     }
 
@@ -43,7 +43,7 @@ public class Following : State
     {
     }
 
-    private Vector2 GetVelocityToNextTarget(double delta)
+    private Vector2 GetVelocityToNextTarget()
     {
         if (_agent.IsNavigationFinished())
         {
@@ -51,9 +51,8 @@ public class Following : State
         }
 
         _agent.TargetPosition = _target.GlobalPosition;
-
         var next = _agent.GetNextPathPosition();
-        var desired = (next - _character.GlobalPosition).Normalized() * _profile.MoveSpeed * (float)delta;
+        var desired = (next - _character.GlobalPosition).Normalized() * _profile.MoveSpeed;
         _agent.SetVelocity(desired);
         return _agent.Velocity;
     }
