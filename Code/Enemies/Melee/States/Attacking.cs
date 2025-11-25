@@ -14,10 +14,6 @@ public class Attacking : State
         _character = character;
     }
 
-    public override void Enter()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public override void PhysicsUpdate(double delta)
     {
@@ -26,10 +22,5 @@ public class Attacking : State
         {
             _character.SwitchToFollowing();
         }
-    }
-
-    public override void Exit()
-    {
-        throw new System.NotImplementedException();
     }
 }

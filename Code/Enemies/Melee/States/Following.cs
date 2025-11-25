@@ -36,10 +36,6 @@ public class Following : State
         _character.MoveAndSlide();
     }
 
-    public override void Exit()
-    {
-    }
-
     private Vector2 GetVelocityToNextTarget()
     {
         if (_agent.IsNavigationFinished())
