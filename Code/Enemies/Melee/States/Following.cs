@@ -1,18 +1,18 @@
 using Godot;
 using Waves.Code.Common;
-using Waves.Code.Enemies.Ranged.Resources;
+using Waves.Code.Enemies.Melee.Resources;
 using Waves.Code.States;
 
-namespace Waves.Code.Enemies.Ranged.States;
+namespace Waves.Code.Enemies.Melee.States;
 
 public class Following : State
 {
-    private readonly RangedEnemy _character;
+    private readonly MeleeEnemy _character;
     private readonly Node2D _target;
-    private readonly RangedEnemyProfile _profile;
+    private readonly MeleeEnemyProfile _profile;
     private readonly NavigationAgent2D _agent;
 
-    public Following(RangedEnemy character, Node2D target, RangedEnemyProfile profile, NavigationAgent2D agent)
+    public Following(MeleeEnemy character, Node2D target, MeleeEnemyProfile profile, NavigationAgent2D agent)
     {
         _character = character;
         _target = target;
@@ -20,20 +20,12 @@ public class Following : State
         _agent = agent;
     }
 
-    public override void Enter()
-    {
-    }
-
-    public override void Update(double delta)
-    {
-    }
-
     public override void PhysicsUpdate(double delta)
     {
         var distance = _target.GlobalPosition.DistanceTo(_character.GlobalPosition);
-        if (distance <= _profile.ShootRange)
+        if (distance <= _profile.Range)
         {
-            _character.SwitchToShooting();
+            _character.SwitchToAttacking();
             return;
         }
 

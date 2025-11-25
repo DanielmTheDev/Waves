@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://di2hp8s55h3d4"]
+[gd_scene load_steps=7 format=3 uid="uid://di2hp8s55h3d4"]
 
 [ext_resource type="Script" uid="uid://cqub6l4doqfpl" path="res://Code/Enemies/Melee/MeleeEnemy.cs" id="1_t0t5w"]
+[ext_resource type="Script" uid="uid://7cnkw0tmyceo" path="res://Code/Enemies/Melee/Resources/MeleeEnemyProfile.cs" id="2_mgs6e"]
+
+[sub_resource type="Resource" id="Resource_rspe1"]
+script = ExtResource("2_mgs6e")
+metadata/_custom_type_script = "uid://7cnkw0tmyceo"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mgs6e"]
 size = Vector2(2, 2)
@@ -15,9 +20,10 @@ size = Vector2(22, 22)
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_t0t5w")
+Profile = SubResource("Resource_rspe1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.12830493, 0.5337038, 0.37194958, 1)
+self_modulate = Color(0.8386352, 0.029332468, 0.2921972, 1)
 scale = Vector2(10, 10)
 texture = SubResource("PlaceholderTexture2D_mgs6e")
 metadata/_edit_lock_ = true
@@ -37,3 +43,9 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_3au16")
 metadata/_edit_lock_ = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+path_desired_distance = 1.0
+path_postprocessing = 1
+debug_enabled = true

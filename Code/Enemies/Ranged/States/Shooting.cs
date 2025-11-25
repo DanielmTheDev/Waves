@@ -1,5 +1,6 @@
 using Godot;
 using Waves.Code.Players.Projectiles;
+using Waves.Code.States;
 
 namespace Waves.Code.Enemies.Ranged.States;
 
@@ -16,22 +17,10 @@ public class Shooting : State
         _character = character;
     }
 
-    public override void Enter()
-    {
-    }
-
-    public override void Exit()
-    {
-    }
-
-    public override void Update(double delta)
-    {
-    }
-
     public override void PhysicsUpdate(double delta)
     {
-        var toTarget = _target.GlobalPosition - _character.GlobalPosition;
-        if (toTarget.Length() > _character.Profile.ShootRange)
+        var distanceToTarget = _target.GlobalPosition.DistanceTo(_character.GlobalPosition);
+        if (distanceToTarget > _character.Profile.ShootRange)
         {
             _character.SwitchToFollowing();
             return;

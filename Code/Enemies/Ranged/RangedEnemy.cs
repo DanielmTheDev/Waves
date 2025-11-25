@@ -3,6 +3,7 @@ using Waves.Code.Constants;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.Enemies.Ranged.States;
 using Waves.Code.Players.Projectiles;
+using Waves.Code.States;
 
 namespace Waves.Code.Enemies.Ranged;
 
@@ -12,8 +13,8 @@ public partial class RangedEnemy : CharacterBody2D
     private Area2D _area2D => GetNode<Area2D>(UniqueNames.Area2d);
     private NavigationAgent2D _agent => GetNode<NavigationAgent2D>(UniqueNames.NavigationAgent2d);
     private ProjectileShooter _shooter => GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);
-    private State _state;
 
+    private State _state;
     private Node2D _target;
 
     public override void _Ready()
