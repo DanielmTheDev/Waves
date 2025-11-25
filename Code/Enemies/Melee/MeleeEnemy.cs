@@ -27,7 +27,10 @@ public partial class MeleeEnemy : CharacterBody2D
     }
 
     public override void _PhysicsProcess(double delta)
-        => _state.PhysicsUpdate(delta);
+    {
+        _state.PhysicsUpdate(delta);
+        MoveAndSlide();
+    }
 
     private void OnBodyEntered(Node2D body)
     {
@@ -36,7 +39,7 @@ public partial class MeleeEnemy : CharacterBody2D
     }
 
     public void SwitchToAttacking()
-        => SwitchState(new Attacking(_target, this));
+        => SwitchState(new Attacking(this, _target));
 
     public void SwitchToFollowing()
         => SwitchState(new Following(this, _target, Profile, _agent));

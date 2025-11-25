@@ -252,4 +252,4 @@ script = ExtResource("7_j2wlq")
 metadata/_edit_lock_ = true
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("8_j2wlq")]
-position = Vector2(288, 174)
+position = Vector2(1633, 964)

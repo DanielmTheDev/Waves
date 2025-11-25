@@ -8,7 +8,7 @@ public class Attacking : State
     private readonly Node2D _target;
     private readonly MeleeEnemy _character;
 
-    public Attacking(Node2D target, MeleeEnemy character)
+    public Attacking(MeleeEnemy character, Node2D target)
     {
         _target = target;
         _character = character;

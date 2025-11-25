@@ -28,7 +28,10 @@ public partial class RangedEnemy : CharacterBody2D
     }
 
     public override void _PhysicsProcess(double delta)
-        => _state.PhysicsUpdate(delta);
+    {
+        _state.PhysicsUpdate(delta);
+        MoveAndSlide();
+    }
 
     private void OnBodyEntered(Node2D body)
     {

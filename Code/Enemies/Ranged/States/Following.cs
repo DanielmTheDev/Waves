@@ -41,11 +41,6 @@ public class Following : State
         LookTowardsNextTarget();
         GetVelocityToNextTarget();
         _character.Velocity = GetVelocityToNextTarget();
-        _character.MoveAndSlide();
-    }
-
-    public override void Exit()
-    {
     }
 
     private Vector2 GetVelocityToNextTarget()

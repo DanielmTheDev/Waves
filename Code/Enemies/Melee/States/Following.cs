@@ -33,7 +33,6 @@ public class Following : State
         LookTowardsNextTarget();
         GetVelocityToNextTarget();
         _character.Velocity = GetVelocityToNextTarget();
-        _character.MoveAndSlide();
     }
 
     private Vector2 GetVelocityToNextTarget()
