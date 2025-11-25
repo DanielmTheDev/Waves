@@ -29,8 +29,8 @@ public class Following : State
             return;
         }
 
-        UpdateAgentTarget();
-        LookTowardsNextTarget();
+        _agent.UpdateAgentTarget(_target);
+        _character.LookTowards(_agent.GetNextPathPosition());
         GetVelocityToNextTarget();
         _character.Velocity = GetVelocityToNextTarget();
     }
@@ -47,14 +47,5 @@ public class Following : State
         var desired = (next - _character.GlobalPosition).Normalized() * _profile.MoveSpeed;
         _agent.SetVelocity(desired);
         return _agent.Velocity;
-    }
-
-    private void LookTowardsNextTarget()
-        => _character.Rotation = _character.GlobalPosition.LookRotation(_agent.GetNextPathPosition());
-
-    private void UpdateAgentTarget()
-    {
-        if (_agent.TargetPosition != _target.GlobalPosition)
-            _agent.TargetPosition = _target.GlobalPosition;
     }
 }
