@@ -25,6 +25,10 @@ public class Following : State
 
     public override void Update(double delta)
     {
+    }
+
+    public override void PhysicsUpdate(double delta)
+    {
         var distance = _target.GlobalPosition.DistanceTo(_character.GlobalPosition);
         if (distance <= _profile.ShootRange)
         {

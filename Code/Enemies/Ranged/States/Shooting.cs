@@ -26,6 +26,10 @@ public class Shooting : State
 
     public override void Update(double delta)
     {
+    }
+
+    public override void PhysicsUpdate(double delta)
+    {
         var toTarget = _target.GlobalPosition - _character.GlobalPosition;
         if (toTarget.Length() > _character.Profile.ShootRange)
         {
