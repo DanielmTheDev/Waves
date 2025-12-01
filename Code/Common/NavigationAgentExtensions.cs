@@ -4,9 +4,16 @@ namespace Waves.Code.Common;
 
 public static class NavigationAgentExtensions
 {
-    public static void UpdateAgentTarget(this NavigationAgent2D agent, Node2D target)
+    public static void SetVelocityToNextTarget(this NavigationAgent2D agent, Vector2 targetPosition, float moveSpeed)
     {
-        if (agent.TargetPosition != target.GlobalPosition)
-            agent.TargetPosition = target.GlobalPosition;
+        agent.SetTargetPosition(targetPosition);
+        if (agent.IsNavigationFinished())
+        {
+            agent.SetVelocity(Vector2.Zero);
+            return;
+        }
+
+        var desired = agent.GetNextPathPosition().DirectionTo(targetPosition) * moveSpeed;
+        agent.SetVelocity(desired);
     }
 }

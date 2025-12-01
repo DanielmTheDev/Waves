@@ -20,14 +20,6 @@ public class Following : State
         _agent = agent;
     }
 
-    public override void Enter()
-    {
-    }
-
-    public override void Update(double delta)
-    {
-    }
-
     public override void PhysicsUpdate(double delta)
     {
         var distance = _target.GlobalPosition.DistanceTo(_character.GlobalPosition);
@@ -37,23 +29,8 @@ public class Following : State
             return;
         }
 
-        _agent.UpdateAgentTarget(_target);
+        _agent.SetVelocityToNextTarget(_target.GlobalPosition, _profile.MoveSpeed);
         _character.LookTowards(_agent.GetNextPathPosition());
-        GetVelocityToNextTarget();
-        _character.Velocity = GetVelocityToNextTarget();
-    }
-
-    private Vector2 GetVelocityToNextTarget()
-    {
-        if (_agent.IsNavigationFinished())
-        {
-            return Vector2.Zero;
-        }
-
-        _agent.TargetPosition = _target.GlobalPosition;
-        var next = _agent.GetNextPathPosition();
-        var desired = (next - _character.GlobalPosition).Normalized() * _profile.MoveSpeed;
-        _agent.SetVelocity(desired);
-        return _agent.Velocity;
+        _character.Velocity = _agent.Velocity;
     }
 }
