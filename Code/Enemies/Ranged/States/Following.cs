@@ -33,4 +33,7 @@ public class Following : State
         _character.LookTowards(_agent.GetNextPathPosition());
         _character.Velocity = _agent.Velocity;
     }
+
+    public override void Exit()
+        => _character.Velocity = Vector2.Zero;
 }
