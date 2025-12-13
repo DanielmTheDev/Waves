@@ -4,7 +4,7 @@ namespace Waves.Code.Common;
 
 public static class NavigationAgentExtensions
 {
-    public static void SetVelocityToNextTarget(this NavigationAgent2D agent, Vector2 targetPosition, float moveSpeed)
+    public static void SetVelocityToNextTarget(this NavigationAgent2D agent, Node2D character, Vector2 targetPosition, float moveSpeed)
     {
         agent.SetTargetPosition(targetPosition);
         if (agent.IsNavigationFinished())
@@ -13,7 +13,7 @@ public static class NavigationAgentExtensions
             return;
         }
 
-        var desired = agent.GetNextPathPosition().DirectionTo(targetPosition) * moveSpeed;
+        var desired = character.GlobalPosition.NormalizedTo(agent.GetNextPathPosition()) * moveSpeed;
         agent.SetVelocity(desired);
     }
 }

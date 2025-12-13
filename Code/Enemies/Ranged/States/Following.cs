@@ -29,7 +29,7 @@ public class Following : State
             return;
         }
 
-        _agent.SetVelocityToNextTarget(_target.GlobalPosition, _profile.MoveSpeed);
+        _agent.SetVelocityToNextTarget(_character, _target.GlobalPosition, _profile.MoveSpeed);
         _character.LookTowards(_agent.GetNextPathPosition());
         _character.Velocity = _agent.Velocity;
     }
