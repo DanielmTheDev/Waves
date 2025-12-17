@@ -1,2 +1,3 @@
  # Todo
- - unify melee enemy and ranged enemy
+    - ranged enemy peek and shoot
+    - melee enemy greyboxing attack
