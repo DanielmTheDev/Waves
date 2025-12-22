@@ -5,31 +5,33 @@ using Waves.Code.States;
 
 namespace Waves.Code.Enemies.Ranged.States;
 
+public record HidingContext(Node2D[] HidingPoints, Node2D Target);
+
 public class Following : State
 {
     private readonly RangedEnemy _character;
-    private readonly Node2D _target;
+    private readonly HidingContext HidingContext;
     private readonly RangedEnemyProfile _profile;
     private readonly NavigationAgent2D _agent;
 
-    public Following(RangedEnemy character, Node2D target, RangedEnemyProfile profile, NavigationAgent2D agent)
+    public Following(RangedEnemy character, Node2D[] hidingPoints, RangedEnemyProfile profile, NavigationAgent2D agent)
     {
         _character = character;
-        _target = target;
         _profile = profile;
         _agent = agent;
+        HidingContext = new HidingContext(hidingPoints, hidingPoints.NearestTo(character));
     }
 
     public override void PhysicsUpdate(double delta)
     {
-        var distance = _target.GlobalPosition.DistanceTo(_character.GlobalPosition);
-        if (distance <= _profile.ShootRange)
+        var distance = HidingContext.Target.GlobalPosition.DistanceTo(_character.GlobalPosition);
+        if (distance <= 2)
         {
             _character.SwitchToShooting();
             return;
         }
 
-        _agent.SetVelocityToNextTarget(_character, _target.GlobalPosition, _profile.MoveSpeed);
+        _agent.SetVelocityToNextTarget(_character, HidingContext.Target.GlobalPosition, _profile.MoveSpeed);
         _character.LookTowards(_agent.GetNextPathPosition());
         _character.Velocity = _agent.Velocity;
     }

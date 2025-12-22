@@ -1,4 +1,6 @@
+using System.Linq;
 using Godot;
+using Waves.Code.Common;
 using Waves.Code.Constants;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.Enemies.Ranged.States;
@@ -23,7 +25,7 @@ public partial class RangedEnemy : CharacterBody2D
         _target = GetTree().GetFirstNodeInGroup(GroupNames.Player) as Node2D;
         _area2D.BodyEntered += OnBodyEntered;
         _area2D.AreaEntered += OnBodyEntered;
-        _state = new Following(this, _target, Profile, _agent);
+        _state = new Following(this, HidingPoints(), Profile, _agent);
         _state.Enter();
     }
 
@@ -33,17 +35,11 @@ public partial class RangedEnemy : CharacterBody2D
         MoveAndSlide();
     }
 
-    private void OnBodyEntered(Node2D body)
-    {
-        body.QueueFree();
-        QueueFree();
-    }
-
     public void SwitchToShooting()
         => SwitchState(new Shooting(this, _target, _shooter));
 
     public void SwitchToFollowing()
-        => SwitchState(new Following(this, _target, Profile, _agent));
+        => SwitchState(new Following(this, HidingPoints(), Profile, _agent));
 
     private void SwitchState(State state)
     {
@@ -51,4 +47,13 @@ public partial class RangedEnemy : CharacterBody2D
         _state = state;
         _state.Enter();
     }
+
+    private void OnBodyEntered(Node2D body)
+    {
+        body.QueueFree();
+        QueueFree();
+    }
+
+    private Node2D[] HidingPoints()
+        => this.GetNodesInGroup<Node2D>(GroupNames.HidingPoint).ToArray();
 }

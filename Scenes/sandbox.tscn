@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dl6bbfab7hk7j"]
+[gd_scene load_steps=13 format=4 uid="uid://dl6bbfab7hk7j"]
 
 [ext_resource type="PackedScene" uid="uid://bcggsmkl6ej4" path="res://Scenes/player.tscn" id="1_d7bho"]
 [ext_resource type="PackedScene" uid="uid://cvh7h2acqvyu0" path="res://Scenes/spawner.tscn" id="3_y0mvb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://engo5jkt6oq2" path="res://Code/Cameras/PlayerCamera.cs" id="7_j2wlq"]
 [ext_resource type="Texture2D" uid="uid://b3f7lqwsn6e2m" path="res://Assets/tileset_sf.png" id="7_wpw8k"]
 [ext_resource type="PackedScene" uid="uid://di2hp8s55h3d4" path="res://Scenes/melee_enemy.tscn" id="8_j2wlq"]
+[ext_resource type="PackedScene" uid="uid://c7us5n05oy3gh" path="res://Scenes/cover_point.tscn" id="9_6yop6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wpw8k"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -254,3 +255,6 @@ metadata/_edit_lock_ = true
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("8_j2wlq")]
 position = Vector2(1633, 964)
+
+[node name="CoverPoint" parent="." instance=ExtResource("9_6yop6")]
+position = Vector2(2019, 997)

@@ -4,7 +4,7 @@
 
 [node name="CoverPoint" type="Node2D"]
 
-[node name="HidingPoint" type="Marker2D" parent="."]
+[node name="HidingPoint" type="Marker2D" parent="." groups=["hidingpoint"]]
 gizmo_extents = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="HidingPoint"]

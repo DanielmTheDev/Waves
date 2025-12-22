@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Waves.Code.Common;
 using Waves.Code.Constants;
 using Waves.Code.Enemies.Ranged;
 using Waves.Code.SceneManagement.Spawning.Resources;
@@ -31,9 +32,7 @@ public partial class Spawner : Node
     }
 
     private Stack<SpawnPoint> SpawnPoints()
-        => new(GetTree()
-            .GetNodesInGroup(GroupNames.SpawnPoint)
-            .OfType<SpawnPoint>()
+        => new(this.GetNodesInGroup<SpawnPoint>(GroupNames.SpawnPoint)
             .OrderBy(_ => _rng.Randi()));
 
     private int NrEnemiesToSpawn(Stack<SpawnPoint> spawnPoints)
