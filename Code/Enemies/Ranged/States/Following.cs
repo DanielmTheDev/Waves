@@ -24,10 +24,9 @@ public class Following : State
 
     public override void PhysicsUpdate(double delta)
     {
-        var distance = HidingContext.Target.GlobalPosition.DistanceTo(_character.GlobalPosition);
-        if (distance <= 2)
+        if (IsAtHidingPoint())
         {
-            _character.SwitchToShooting();
+            _character.SwitchToPeeking();
             return;
         }
 
@@ -38,4 +37,7 @@ public class Following : State
 
     public override void Exit()
         => _character.Velocity = Vector2.Zero;
+
+    private bool IsAtHidingPoint()
+        => HidingContext.Target.GlobalPosition.DistanceTo(_character.GlobalPosition) <= 2;
 }

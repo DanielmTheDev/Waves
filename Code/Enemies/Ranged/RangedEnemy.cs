@@ -41,6 +41,9 @@ public partial class RangedEnemy : CharacterBody2D
     public void SwitchToFollowing()
         => SwitchState(new Following(this, HidingPoints(), Profile, _agent));
 
+    public void SwitchToPeeking()
+        => SwitchState(new Peeking(this, Profile, _agent, _target));
+
     private void SwitchState(State state)
     {
         _state.Exit();
@@ -55,5 +58,5 @@ public partial class RangedEnemy : CharacterBody2D
     }
 
     private Node2D[] HidingPoints()
-        => this.GetNodesInGroup<Node2D>(GroupNames.HidingPoint).ToArray();
+        => this.GetNodesInGroup<Node2D>(GroupNames.CoverPoint).ToArray();
 }
