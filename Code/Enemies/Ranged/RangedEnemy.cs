@@ -25,7 +25,7 @@ public partial class RangedEnemy : CharacterBody2D
         _target = GetTree().GetFirstNodeInGroup(GroupNames.Player) as Node2D;
         _area2D.BodyEntered += OnBodyEntered;
         _area2D.AreaEntered += OnBodyEntered;
-        _state = new Following(this, HidingPoints(), Profile, _agent);
+        _state = new GoToHidingPoint(this, this.AllCoverpoints(), Profile, _agent);
         _state.Enter();
     }
 
@@ -39,7 +39,7 @@ public partial class RangedEnemy : CharacterBody2D
         => SwitchState(new Shooting(this, _target, _shooter));
 
     public void SwitchToFollowing()
-        => SwitchState(new Following(this, HidingPoints(), Profile, _agent));
+        => SwitchState(new GoToHidingPoint(this, this.AllCoverpoints(), Profile, _agent));
 
     public void SwitchToPeeking()
         => SwitchState(new Peeking(this, Profile, _agent, _target));

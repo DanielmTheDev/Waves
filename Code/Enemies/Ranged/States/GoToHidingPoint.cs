@@ -2,24 +2,25 @@ using Godot;
 using Waves.Code.Common;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.States;
+using Waves.Code.World.Combat.CoverPoints;
 
 namespace Waves.Code.Enemies.Ranged.States;
 
-public record HidingContext(Node2D[] HidingPoints, Node2D Target);
+public record HidingContext(CoverPoint[] HidingPoints, CoverPoint Target);
 
-public class Following : State
+public class GoToHidingPoint : State
 {
     private readonly RangedEnemy _character;
     private readonly HidingContext HidingContext;
     private readonly RangedEnemyProfile _profile;
     private readonly NavigationAgent2D _agent;
 
-    public Following(RangedEnemy character, Node2D[] hidingPoints, RangedEnemyProfile profile, NavigationAgent2D agent)
+    public GoToHidingPoint(RangedEnemy character, CoverPoint[] coverPoints, RangedEnemyProfile profile, NavigationAgent2D agent)
     {
         _character = character;
         _profile = profile;
         _agent = agent;
-        HidingContext = new HidingContext(hidingPoints, hidingPoints.NearestTo(character));
+        HidingContext = new HidingContext(coverPoints, coverPoints.NearestTo(character));
     }
 
     public override void PhysicsUpdate(double delta)
