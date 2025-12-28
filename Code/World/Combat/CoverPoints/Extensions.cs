@@ -5,6 +5,6 @@ namespace Waves.Code.World.Combat.CoverPoints;
 
 public static class Extensions
 {
-    public static CoverPoint NearestTo(this CoverPoint[] nodes, Node2D origin)
-        => nodes.MinBy(hp => hp.GlobalPosition.DistanceTo(origin.GlobalPosition));
+    public static CoverPoint NearestTo(this CoverPoint[] coverPoints, Node2D origin)
+        => coverPoints.MinBy(cp => cp.GlobalPosition.DistanceTo(origin.GlobalPosition));
 }

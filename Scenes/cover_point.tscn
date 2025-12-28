@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7us5n05oy3gh"]
 
 [ext_resource type="Texture2D" uid="uid://bprtgo3ixm5op" path="res://icon.svg" id="1_2grj4"]
-[ext_resource type="Script" uid="uid://cqer6k1clwiou" path="res://Code/World/Combat/CoverPoint.cs" id="1_uf1hb"]
+[ext_resource type="Script" uid="uid://cfjcvfivo4h40" path="res://Code/World/Combat/CoverPoints/CoverPoint.cs" id="1_uf1hb"]
 
 [node name="CoverPoint" type="Node2D" groups=["coverpoint"]]
 script = ExtResource("1_uf1hb")
 
 [node name="HidingPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
 gizmo_extents = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="HidingPoint"]
@@ -14,6 +15,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_2grj4")
 
 [node name="ShootingPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
 modulate = Color(1, 0.11372549, 1, 1)
 position = Vector2(0, 70)
 skew = 0.7120943
