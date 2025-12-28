@@ -6,6 +6,7 @@ using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.Enemies.Ranged.States;
 using Waves.Code.Players.Projectiles;
 using Waves.Code.States;
+using Waves.Code.World.Combat.CoverPoints;
 
 namespace Waves.Code.Enemies.Ranged;
 
@@ -25,7 +26,7 @@ public partial class RangedEnemy : CharacterBody2D
         _target = GetTree().GetFirstNodeInGroup(GroupNames.Player) as Node2D;
         _area2D.BodyEntered += OnBodyEntered;
         _area2D.AreaEntered += OnBodyEntered;
-        _state = new GoToHidingPoint(this, this.AllCoverpoints(), Profile, _agent);
+        _state = new TakingCover(new NavigatingRanged(this, _agent), this.AllCoverpoints(), Profile);
         _state.Enter();
     }
 
@@ -39,10 +40,10 @@ public partial class RangedEnemy : CharacterBody2D
         => SwitchState(new Shooting(this, _target, _shooter));
 
     public void SwitchToFollowing()
-        => SwitchState(new GoToHidingPoint(this, this.AllCoverpoints(), Profile, _agent));
+        => SwitchState(new TakingCover(new NavigatingRanged(this, _agent), this.AllCoverpoints(), Profile));
 
-    public void SwitchToPeeking()
-        => SwitchState(new Peeking(this, Profile, _agent, _target));
+    public void SwitchToHiding(CoverPoint current)
+        => SwitchState(new Hiding(this, current, _agent));
 
     private void SwitchState(State state)
     {

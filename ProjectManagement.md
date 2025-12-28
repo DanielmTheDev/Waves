@@ -1,8 +1,7 @@
 # Todo
 - next changes
-  - use coverpoint instead of plain node2d
-  - pass current coverpoint to peeking state
-  - implement peeking state
+    - Extract Navigation and looking into NavigatingRanged
+    - implement hiding
 - switch state peeking
   - loop
       - wait
