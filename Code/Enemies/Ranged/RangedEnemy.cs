@@ -43,7 +43,7 @@ public partial class RangedEnemy : CharacterBody2D
         => SwitchState(new TakingCover(new NavigatingRanged(this, _agent), this.AllCoverpoints(), Profile));
 
     public void SwitchToHiding(CoverPoint current)
-        => SwitchState(new Hiding(this, current, _agent));
+        => SwitchState(new Hiding(new NavigatingRanged(this, _agent), current));
 
     private void SwitchState(State state)
     {

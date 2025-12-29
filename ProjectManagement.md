@@ -1,6 +1,5 @@
 # Todo
 - next changes
-    - Extract Navigation and looking into NavigatingRanged
     - implement hiding
 - switch state peeking
   - loop
