@@ -1,4 +1,5 @@
 using Godot;
+using Waves.Code.Common;
 
 namespace Waves.Code.Enemies.Ranged;
 
@@ -11,5 +12,12 @@ public class NavigatingRanged
     {
         Character = character;
         Agent = agent;
+    }
+
+    public void MoveTowards(Vector2 target, float speed)
+    {
+        Agent.SetVelocityToNextTarget(Character, target, speed);
+        Character.LookTowards(Agent.GetNextPathPosition());
+        Character.Velocity = Agent.Velocity;
     }
 }

@@ -1,5 +1,4 @@
 using Godot;
-using Waves.Code.Common;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
@@ -26,10 +25,7 @@ public class TakingCover : State
             _navigatingRanged.Character.SwitchToHiding(CoverPoint);
             return;
         }
-
-        _navigatingRanged.Agent.SetVelocityToNextTarget(_navigatingRanged.Character, CoverPoint.HidingPoint.GlobalPosition, _profile.MoveSpeed);
-        _navigatingRanged.Character.LookTowards(_navigatingRanged.Agent.GetNextPathPosition());
-        _navigatingRanged.Character.Velocity = _navigatingRanged.Agent.Velocity;
+        _navigatingRanged.MoveTowards(CoverPoint.HidingPoint.GlobalPosition, _profile.MoveSpeed);
     }
 
     public override void Exit()
