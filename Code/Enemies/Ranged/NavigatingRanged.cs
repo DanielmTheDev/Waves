@@ -20,4 +20,10 @@ public class NavigatingRanged
         Character.LookTowards(Agent.GetNextPathPosition());
         Character.Velocity = Agent.Velocity;
     }
+
+    public void Stop()
+        => Character.Velocity = Vector2.Zero;
+
+    public bool IsAtPosition(Vector2 hidingPointGlobalPosition, float tolerance = 2)
+        => hidingPointGlobalPosition.DistanceTo(Character.GlobalPosition) <= tolerance;
 }

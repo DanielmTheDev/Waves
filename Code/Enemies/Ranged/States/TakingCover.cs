@@ -1,4 +1,3 @@
-using Godot;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
@@ -29,8 +28,8 @@ public class TakingCover : State
     }
 
     public override void Exit()
-        => _navigatingRanged.Character.Velocity = Vector2.Zero;
+        => _navigatingRanged.Stop();
 
     private bool IsAtHidingPoint()
-        => CoverPoint.HidingPoint.GlobalPosition.DistanceTo(_navigatingRanged.Character.GlobalPosition) <= 2;
+        => _navigatingRanged.IsAtPosition(CoverPoint.HidingPoint.GlobalPosition);
 }
