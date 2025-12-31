@@ -1,4 +1,5 @@
 using Godot;
+using Waves.Code.Common;
 using Waves.Code.Players.Projectiles;
 using Waves.Code.States;
 
@@ -8,21 +9,21 @@ public class Shooting : State
 {
     private readonly ProjectileShooter _shooter;
     private readonly Node2D _target;
-    private readonly RangedEnemy _character;
+    private readonly RangedEnemy _enemy;
 
-    public Shooting(RangedEnemy character, Node2D target, ProjectileShooter shooter)
+    public Shooting(RangedEnemy enemy, Node2D target, ProjectileShooter shooter)
     {
         _shooter = shooter;
         _target = target;
-        _character = character;
+        _enemy = enemy;
     }
 
     public override void PhysicsProcess(double delta)
     {
-        var distanceToTarget = _target.GlobalPosition.DistanceTo(_character.GlobalPosition);
-        if (distanceToTarget > _character.Profile.ShootRange)
+        var distanceToTarget = _target.GlobalPosition.DistanceTo(_enemy.GlobalPosition);
+        if (distanceToTarget > _enemy.Profile.ShootRange)
         {
-            _character.SwitchToTakingCover();
+            _enemy.SwitchToTakingCover();
             return;
         }
         _shooter.TryShootAt(_target.GlobalPosition);

@@ -1,5 +1,5 @@
-using System;
 using Godot;
+using Waves.Code.Common;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
 
@@ -9,21 +9,21 @@ public class Hiding : State
 {
     private readonly NavigatingRanged _enemy;
     private readonly CoverPoint _coverPoint;
-    private float _waitTime;
+    private readonly RandomTimer _randomTimer;
 
     public Hiding(NavigatingRanged enemy, CoverPoint coverPoint)
     {
         _enemy = enemy;
         _coverPoint = coverPoint;
-        _waitTime = Random.Shared.NextSingle() * 2 + 1;
+        _randomTimer = new RandomTimer(1, 2);
     }
 
     public override void Process(double delta)
     {
         GD.Print("Hiding Update");
         base.Process(delta);
-        _waitTime -= (float)delta;
-        if (_waitTime <= 0)
+        _randomTimer.ElapseTime(delta);
+        if (_randomTimer.IsDone())
         {
             _enemy.Character.SwitchToPeeking(_coverPoint);
         }
