@@ -17,7 +17,7 @@ public class Shooting : State
         _character = character;
     }
 
-    public override void PhysicsUpdate(double delta)
+    public override void PhysicsProcess(double delta)
     {
         var distanceToTarget = _target.GlobalPosition.DistanceTo(_character.GlobalPosition);
         if (distanceToTarget > _character.Profile.ShootRange)

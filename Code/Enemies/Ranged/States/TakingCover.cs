@@ -18,7 +18,7 @@ public class TakingCover : State
         CoverPoint = coverPoints.NearestTo(enemy.Character);
     }
 
-    public override void PhysicsUpdate(double delta)
+    public override void PhysicsProcess(double delta)
     {
         GD.Print("PhysicsUpdate TakingCover");
         if (IsAtHidingPoint())

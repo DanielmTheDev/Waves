@@ -17,7 +17,7 @@ texture = ExtResource("1_2grj4")
 [node name="ShootingPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(1, 0.11372549, 1, 1)
-position = Vector2(0, 70)
+position = Vector2(7.6293945e-06, 198)
 skew = 0.7120943
 
 [node name="Sprite2D2" type="Sprite2D" parent="ShootingPoint"]

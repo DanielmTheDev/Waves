@@ -32,17 +32,20 @@ public partial class RangedEnemy : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        _state.PhysicsUpdate(delta);
+        _state.PhysicsProcess(delta);
         MoveAndSlide();
+    }
+
+    public override void _Process(double delta)
+    {
+        _state.Process(delta);
     }
 
     public void SwitchToShooting()
         => SwitchState(new Shooting(this, _target, _shooter));
 
-    public void SwitchToPeeking()
-    {
-        GD.Print("Switching to peeking");
-    }
+    public void SwitchToPeeking(CoverPoint current)
+        => SwitchState(new Peeking(new NavigatingRanged(this, _agent), current, _target));
 
     public void SwitchToFollowing()
         => SwitchState(new TakingCover(new NavigatingRanged(this, _agent), this.AllCoverpoints(), Profile));

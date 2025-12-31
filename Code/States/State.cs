@@ -4,6 +4,6 @@ public abstract class State
 {
     public virtual void Enter() {}
     public virtual void Exit() {}
-    public virtual void Update(double delta) {}
-    public virtual void PhysicsUpdate(double delta) {}
+    public virtual void Process(double delta) {}
+    public virtual void PhysicsProcess(double delta) {}
 }

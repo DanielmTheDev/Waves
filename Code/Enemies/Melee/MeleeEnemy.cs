@@ -28,7 +28,7 @@ public partial class MeleeEnemy : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        _state.PhysicsUpdate(delta);
+        _state.PhysicsProcess(delta);
         MoveAndSlide();
     }
 
