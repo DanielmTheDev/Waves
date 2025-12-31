@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 
 namespace Waves.Code.Common;
 
@@ -17,8 +16,7 @@ public static class Node2dExtensions
 
         if (self is CollisionObject2D physicsSelf)
         {
-            query.Exclude = new Array<Rid> { physicsSelf.GetRid() };
-
+            query.Exclude = [physicsSelf.GetRid()];
         }
 
         var result = spaceState.IntersectRay(query);

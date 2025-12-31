@@ -45,9 +45,9 @@ public partial class RangedEnemy : CharacterBody2D
         => SwitchState(new Shooting(this, _target, _shooter));
 
     public void SwitchToPeeking(CoverPoint current)
-        => SwitchState(new Peeking(new NavigatingRanged(this, _agent), current, _target));
+        => SwitchState(new Peeking(new NavigatingRanged(this, _agent), current, _target, Profile));
 
-    public void SwitchToFollowing()
+    public void SwitchToTakingCover()
         => SwitchState(new TakingCover(new NavigatingRanged(this, _agent), this.AllCoverpoints(), Profile));
 
     public void SwitchToHiding(CoverPoint current)

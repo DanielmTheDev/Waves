@@ -22,7 +22,7 @@ public class Shooting : State
         var distanceToTarget = _target.GlobalPosition.DistanceTo(_character.GlobalPosition);
         if (distanceToTarget > _character.Profile.ShootRange)
         {
-            _character.SwitchToFollowing();
+            _character.SwitchToTakingCover();
             return;
         }
         _shooter.TryShootAt(_target.GlobalPosition);
