@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Godot.Collections;
 using Waves.Code.Constants;
 
 namespace Waves.Code.Common;
