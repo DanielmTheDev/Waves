@@ -27,7 +27,6 @@ public class NavigatingRanged
     public bool IsAtPosition(Vector2 position, float tolerance = 10)
     {
         var distanceTo = position.DistanceTo(Character.GlobalPosition);
-        GD.Print(distanceTo);
         return distanceTo <= tolerance;
     }
 }

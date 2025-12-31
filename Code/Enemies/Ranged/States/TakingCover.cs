@@ -20,10 +20,8 @@ public class TakingCover : State
 
     public override void PhysicsProcess(double delta)
     {
-        GD.Print("PhysicsUpdate TakingCover");
         if (IsAtHidingPoint())
         {
-            GD.Print("At hiding point");
             _enemy.Character.SwitchToHiding(CoverPoint);
             return;
         }

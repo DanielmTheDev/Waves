@@ -20,7 +20,6 @@ public class Hiding : State
 
     public override void Process(double delta)
     {
-        GD.Print("Hiding Update");
         base.Process(delta);
         _randomTimer.ElapseTime(delta);
         if (_randomTimer.IsDone())
