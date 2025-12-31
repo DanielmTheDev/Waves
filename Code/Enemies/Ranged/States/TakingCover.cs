@@ -1,3 +1,4 @@
+using Godot;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
@@ -7,29 +8,31 @@ namespace Waves.Code.Enemies.Ranged.States;
 public class TakingCover : State
 {
     private readonly CoverPoint CoverPoint;
-    private readonly NavigatingRanged _navigatingRanged;
+    private readonly NavigatingRanged _enemy;
     private readonly RangedEnemyProfile _profile;
 
-    public TakingCover(NavigatingRanged navigatingRanged, CoverPoint[] coverPoints, RangedEnemyProfile profile)
+    public TakingCover(NavigatingRanged enemy, CoverPoint[] coverPoints, RangedEnemyProfile profile)
     {
-        _navigatingRanged = navigatingRanged;
+        _enemy = enemy;
         _profile = profile;
-        CoverPoint = coverPoints.NearestTo(navigatingRanged.Character);
+        CoverPoint = coverPoints.NearestTo(enemy.Character);
     }
 
     public override void PhysicsUpdate(double delta)
     {
+        GD.Print("PhysicsUpdate TakingCover");
         if (IsAtHidingPoint())
         {
-            _navigatingRanged.Character.SwitchToHiding(CoverPoint);
+            GD.Print("At hiding point");
+            _enemy.Character.SwitchToHiding(CoverPoint);
             return;
         }
-        _navigatingRanged.MoveTowards(CoverPoint.HidingPoint.GlobalPosition, _profile.MoveSpeed);
+        _enemy.MoveTowards(CoverPoint.HidingPoint.GlobalPosition, _profile.MoveSpeed);
     }
 
     public override void Exit()
-        => _navigatingRanged.Stop();
+        => _enemy.Stop();
 
     private bool IsAtHidingPoint()
-        => _navigatingRanged.IsAtPosition(CoverPoint.HidingPoint.GlobalPosition);
+        => _enemy.IsAtPosition(CoverPoint.HidingPoint.GlobalPosition);
 }

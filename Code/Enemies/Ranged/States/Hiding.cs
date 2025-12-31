@@ -6,8 +6,24 @@ namespace Waves.Code.Enemies.Ranged.States;
 
 public class Hiding : State
 {
-    public Hiding(NavigatingRanged navigatingRanged, CoverPoint coverPoint)
+    private readonly NavigatingRanged _enemy;
+    private readonly CoverPoint _coverPoint;
+    private float _waitTime;
+
+    public Hiding(NavigatingRanged enemy, CoverPoint coverPoint)
     {
-        throw new NotImplementedException();
+        _enemy = enemy;
+        _coverPoint = coverPoint;
+        _waitTime = Random.Shared.NextSingle() * 2 + 1;
+    }
+
+    public override void Update(double delta)
+    {
+        base.Update(delta);
+        _waitTime -= (float)delta;
+        if (_waitTime <= 0)
+        {
+            _enemy.Character.SwitchToPeeking();
+        }
     }
 }

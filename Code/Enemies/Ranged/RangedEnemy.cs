@@ -39,6 +39,11 @@ public partial class RangedEnemy : CharacterBody2D
     public void SwitchToShooting()
         => SwitchState(new Shooting(this, _target, _shooter));
 
+    public void SwitchToPeeking()
+    {
+        GD.Print("Switching to peeking");
+    }
+
     public void SwitchToFollowing()
         => SwitchState(new TakingCover(new NavigatingRanged(this, _agent), this.AllCoverpoints(), Profile));
 

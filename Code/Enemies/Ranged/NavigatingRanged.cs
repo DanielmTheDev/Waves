@@ -24,6 +24,10 @@ public class NavigatingRanged
     public void Stop()
         => Character.Velocity = Vector2.Zero;
 
-    public bool IsAtPosition(Vector2 hidingPointGlobalPosition, float tolerance = 2)
-        => hidingPointGlobalPosition.DistanceTo(Character.GlobalPosition) <= tolerance;
+    public bool IsAtPosition(Vector2 position, float tolerance = 10)
+    {
+        var distanceTo = position.DistanceTo(Character.GlobalPosition);
+        GD.Print(distanceTo);
+        return distanceTo <= tolerance;
+    }
 }
