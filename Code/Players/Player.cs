@@ -51,7 +51,6 @@ public partial class Player : CharacterBody2D
     {
         _hitPoints = _hitPoints with { Current = _hitPoints.Current - 1 };
         EventBus.Instance.EmitHitPointChanged(_hitPoints.Current, _hitPoints.Max);
-        body.QueueFree();
     }
 
     private void ProcessAnimation()
