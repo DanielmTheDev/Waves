@@ -23,7 +23,7 @@ public class Peeking : State
 
     public override void PhysicsProcess(double delta)
     {
-        if (_navigator.Character.CanSee(_target, PhysicsLayers.Player | PhysicsLayers.World))
+        if (_navigator.Character.CanClearPath(_target, 10f, PhysicsLayers.World))
         {
             _navigator.Stop();
             _navigator.Character.SwitchToShooting();
