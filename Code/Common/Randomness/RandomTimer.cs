@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Waves.Code.Common;
+namespace Waves.Code.Common.Randomness;
 
 public class RandomTimer
 {

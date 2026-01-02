@@ -1,5 +1,6 @@
 using Godot;
-using Waves.Code.Common;
+using Waves.Code.Common.Randomness;
+using Waves.Code.Infrastructure;
 using Waves.Code.Players.Projectiles;
 using Waves.Code.States;
 
@@ -26,7 +27,7 @@ public class Shooting : State
         var distanceToTarget = _target.GlobalPosition.DistanceTo(_enemy.GlobalPosition);
         if (distanceToTarget > _enemy.Profile.ShootRange || _randomTimer.IsDone())
         {
-            _enemy.SwitchToTakingCover();
+            _enemy.SwitchToTakingCover(CoverPoints.Instance.Nearest(_enemy));
             return;
         }
         _shooter.TryShootAt(_target.GlobalPosition);

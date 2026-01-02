@@ -1,5 +1,6 @@
+using System;
 using Godot;
-using Waves.Code.Common;
+using Waves.Code.Common.Randomness;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
 
@@ -20,7 +21,6 @@ public class Hiding : State
 
     public override void Process(double delta)
     {
-        base.Process(delta);
         _randomTimer.ElapseTime(delta);
         if (_randomTimer.IsDone())
         {
@@ -28,3 +28,4 @@ public class Hiding : State
         }
     }
 }
+

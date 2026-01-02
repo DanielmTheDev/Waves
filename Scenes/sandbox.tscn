@@ -252,5 +252,11 @@ zoom = Vector2(1.5, 1.5)
 script = ExtResource("7_j2wlq")
 metadata/_edit_lock_ = true
 
-[node name="CoverPoint" parent="." instance=ExtResource("9_6yop6")]
+[node name="CoverPoints" type="Node" parent="."]
+
+[node name="CoverPoint" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(2019, 997)
+
+[node name="CoverPoint2" parent="CoverPoints" instance=ExtResource("9_6yop6")]
+position = Vector2(2023, 916)
+scale = Vector2(-1, -1)
