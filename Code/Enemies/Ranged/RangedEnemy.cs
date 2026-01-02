@@ -37,9 +37,7 @@ public partial class RangedEnemy : CharacterBody2D
 	}
 
 	public override void _Process(double delta)
-	{
-		_state.Process(delta);
-	}
+		=> _state.Process(delta);
 
 	public void SwitchToShooting()
 		=> SwitchState(new Shooting(this, _target, _shooter));
@@ -49,6 +47,9 @@ public partial class RangedEnemy : CharacterBody2D
 
 	public void SwitchToTakingCover(CoverPoint coverPoint)
 		=> SwitchState(new TakingCover(new NavigatingRanged(this, _agent), coverPoint, Profile));
+
+	public void SwitchToAssaulting()
+		=> SwitchState(new Assaulting(new NavigatingRanged(this, _agent), _target, Profile));
 
 	public void SwitchToHiding(CoverPoint current)
 		=> SwitchState(new Hiding(new NavigatingRanged(this, _agent), current));

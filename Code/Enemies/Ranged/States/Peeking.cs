@@ -34,22 +34,24 @@ public class Peeking : State
         _navigator.MoveTowards(_coverPoint.ShootingPoint.GlobalPosition, _profile.MoveSpeed);
 
         if (_navigator.IsAtPosition(_coverPoint.ShootingPoint.GlobalPosition))
+            SwitchToNextState();
+    }
+
+    private void SwitchToNextState()
+    {
+        switch (GetNextAction())
         {
-            switch (GetNextAction())
-            {
-                case NextAction.TakeCover:
-                    _navigator.Character.SwitchToTakingCover(_coverPoint);
-                    break;
-                case NextAction.Reposition:
-                    _navigator.Character.SwitchToTakingCover(CoverPoints.Instance.Random());
-                    break;
-                case NextAction.Attack:
-                    // todo: here he must follow, this is just until that is implemented
-                    _navigator.Character.SwitchToTakingCover(CoverPoints.Instance.Random());
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            case NextAction.TakeCover:
+                _navigator.Character.SwitchToTakingCover(_coverPoint);
+                break;
+            case NextAction.Reposition:
+                _navigator.Character.SwitchToTakingCover(CoverPoints.Instance.Random());
+                break;
+            case NextAction.Attack:
+                _navigator.Character.SwitchToAssaulting();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
