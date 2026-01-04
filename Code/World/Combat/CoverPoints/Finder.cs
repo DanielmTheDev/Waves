@@ -1,5 +1,7 @@
 using System.Linq;
 using Godot;
+using LanguageExt;
+using static LanguageExt.Prelude;
 using Waves.Code.Constants;
 
 namespace Waves.Code.World.Combat.CoverPoints;
@@ -14,12 +16,17 @@ public sealed partial class Finder : Node
     private CoverPoint[] All()
         => GetTree().GetNodesInGroup(GroupNames.CoverPoint).OfType<CoverPoint>().ToArray();
 
-    public CoverPoint[] Free()
+    private CoverPoint[] AllFree()
         => All().Where(cp => !cp.IsOccupied).ToArray();
-
-    public CoverPoint RandomFree()
-        => All().OrderBy(_ => GD.Randf()).First();
 
     public CoverPoint Nearest(Node2D origin)
         => All().NearestTo(origin);
+
+    public Option<CoverPoint> RandomFree()
+    {
+        var available = AllFree();
+        return available.Length == 0
+            ? None
+            : Some(available[GD.RandRange(0, available.Length - 1)]);
+    }
 }

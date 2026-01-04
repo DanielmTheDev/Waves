@@ -30,6 +30,7 @@ public class Peeking : State
             _navigator.Character.SwitchToShooting();
             return;
         }
+
         _navigator.MoveTowards(_coverPoint.ShootingPoint.GlobalPosition, _profile.MoveSpeed);
 
         if (_navigator.IsAtPosition(_coverPoint.ShootingPoint.GlobalPosition))
@@ -44,7 +45,10 @@ public class Peeking : State
                 _navigator.Character.SwitchToTakingCover(_coverPoint);
                 break;
             case NextAction.Reposition:
-                _navigator.Character.SwitchToTakingCover(Finder.Instance.RandomFree());
+                var freePoint = Finder.Instance.RandomFree();
+                freePoint.Match(
+                    point => _navigator.Character.SwitchToTakingCover(point),
+                    () => _navigator.Character.SwitchToAssaulting());
                 break;
             case NextAction.Attack:
                 _navigator.Character.SwitchToAssaulting();
