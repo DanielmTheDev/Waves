@@ -2,7 +2,6 @@ using System;
 using Godot;
 using Waves.Code.Common;
 using Waves.Code.Enemies.Ranged.Resources;
-using Waves.Code.Infrastructure;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
 
@@ -45,7 +44,7 @@ public class Peeking : State
                 _navigator.Character.SwitchToTakingCover(_coverPoint);
                 break;
             case NextAction.Reposition:
-                _navigator.Character.SwitchToTakingCover(CoverPoints.Instance.Random());
+                _navigator.Character.SwitchToTakingCover(Finder.Instance.RandomFree());
                 break;
             case NextAction.Attack:
                 _navigator.Character.SwitchToAssaulting();

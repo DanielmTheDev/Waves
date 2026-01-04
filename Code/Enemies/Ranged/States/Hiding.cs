@@ -1,5 +1,3 @@
-using System;
-using Godot;
 using Waves.Code.Common.Randomness;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
@@ -27,5 +25,8 @@ public class Hiding : State
             _enemy.Character.SwitchToPeeking(_coverPoint);
         }
     }
+
+    public override void Exit()
+        => _coverPoint.Free();
 }
 

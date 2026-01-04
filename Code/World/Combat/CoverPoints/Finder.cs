@@ -1,21 +1,23 @@
 using System.Linq;
 using Godot;
 using Waves.Code.Constants;
-using Waves.Code.World.Combat.CoverPoints;
 
-namespace Waves.Code.Infrastructure;
+namespace Waves.Code.World.Combat.CoverPoints;
 
-public sealed partial class CoverPoints : Node
+public sealed partial class Finder : Node
 {
-    public static CoverPoints Instance { get; private set; }
+    public static Finder Instance { get; private set; }
 
     public override void _EnterTree()
         => Instance = this;
 
-    public CoverPoint[] All()
+    private CoverPoint[] All()
         => GetTree().GetNodesInGroup(GroupNames.CoverPoint).OfType<CoverPoint>().ToArray();
 
-    public CoverPoint Random()
+    public CoverPoint[] Free()
+        => All().Where(cp => !cp.IsOccupied).ToArray();
+
+    public CoverPoint RandomFree()
         => All().OrderBy(_ => GD.Randf()).First();
 
     public CoverPoint Nearest(Node2D origin)

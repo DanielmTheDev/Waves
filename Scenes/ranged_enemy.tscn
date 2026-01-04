@@ -1,12 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://c87a5iidrcjsm"]
+[gd_scene load_steps=12 format=3 uid="uid://c87a5iidrcjsm"]
 
 [ext_resource type="Script" uid="uid://jay5elol12xf" path="res://Code/Enemies/Ranged/RangedEnemy.cs" id="1_1qm41"]
 [ext_resource type="Resource" uid="uid://gg34sk2ujwni" path="res://Resources/sandbox_enemy_profile.tres" id="2_f5pa5"]
 [ext_resource type="Script" uid="uid://bscsk52s7o1en" path="res://Code/Players/Projectiles/ProjectileShooter.cs" id="3_bvp7b"]
+[ext_resource type="Texture2D" uid="uid://cbiuns0iimuam" path="res://Assets/Enemies/kraken.png" id="3_f5pa5"]
 [ext_resource type="Resource" uid="uid://b7fwfnpqasx14" path="res://Resources/enemy_projectile_profile.tres" id="4_lcaim"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_28ecx"]
-size = Vector2(2, 2)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvp7b"]
+atlas = ExtResource("3_f5pa5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcaim"]
+atlas = ExtResource("3_f5pa5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbmq5"]
+atlas = ExtResource("3_f5pa5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kybcg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvp7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcaim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbmq5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qm41"]
 radius = 99.99999
@@ -21,10 +48,12 @@ collision_mask = 23
 script = ExtResource("1_1qm41")
 Profile = ExtResource("2_f5pa5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.8274412, 0.13885698, 0.19452173, 1)
-scale = Vector2(10, 10)
-texture = SubResource("PlaceholderTexture2D_28ecx")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_kybcg")
+autoplay = "default"
+frame_progress = 0.87579477
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

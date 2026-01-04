@@ -1,4 +1,3 @@
-using Godot;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
@@ -17,6 +16,9 @@ public class TakingCover : State
         this._coverPoint = _coverPoint;
         _profile = profile;
     }
+
+    public override void Enter()
+        => _coverPoint.Occupy();
 
     public override void PhysicsProcess(double delta)
     {

@@ -8,6 +8,7 @@ using Waves.Code.Infrastructure;
 using Waves.Code.Players.Projectiles;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
+using Finder = Waves.Code.World.Combat.CoverPoints.Finder;
 
 namespace Waves.Code.Enemies.Ranged;
 
@@ -27,7 +28,7 @@ public partial class RangedEnemy : CharacterBody2D
 		_target = GetTree().GetFirstNodeInGroup(GroupNames.Player) as Node2D;
 		_area2D.BodyEntered += OnBodyEntered;
 		_area2D.AreaEntered += OnBodyEntered;
-		SwitchToTakingCover(CoverPoints.Instance.Nearest(this));
+		SwitchToTakingCover(Finder.Instance.Nearest(this));
 	}
 
 	public override void _PhysicsProcess(double delta)
