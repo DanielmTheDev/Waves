@@ -1,24 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://c87a5iidrcjsm"]
+[gd_scene load_steps=13 format=3 uid="uid://c87a5iidrcjsm"]
 
 [ext_resource type="Script" uid="uid://jay5elol12xf" path="res://Code/Enemies/Ranged/RangedEnemy.cs" id="1_1qm41"]
 [ext_resource type="Resource" uid="uid://gg34sk2ujwni" path="res://Resources/sandbox_enemy_profile.tres" id="2_f5pa5"]
 [ext_resource type="Script" uid="uid://bscsk52s7o1en" path="res://Code/Players/Projectiles/ProjectileShooter.cs" id="3_bvp7b"]
-[ext_resource type="Texture2D" uid="uid://cbiuns0iimuam" path="res://Assets/Enemies/kraken.png" id="3_f5pa5"]
+[ext_resource type="Texture2D" uid="uid://biim3li23ulcc" path="res://Assets/Enemies/pistol_guy.png" id="3_f5pa5"]
 [ext_resource type="Resource" uid="uid://b7fwfnpqasx14" path="res://Resources/enemy_projectile_profile.tres" id="4_lcaim"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvp7b"]
 atlas = ExtResource("3_f5pa5")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lcaim"]
 atlas = ExtResource("3_f5pa5")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbmq5"]
 atlas = ExtResource("3_f5pa5")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kybcg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kybcg"]
+atlas = ExtResource("3_f5pa5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xg1bg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -29,10 +33,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pbmq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kybcg")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qm41"]
@@ -49,11 +56,9 @@ script = ExtResource("1_1qm41")
 Profile = ExtResource("2_f5pa5")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0.8274412, 0.13885698, 0.19452173, 1)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_kybcg")
+sprite_frames = SubResource("SpriteFrames_xg1bg")
 autoplay = "default"
-frame_progress = 0.87579477
+frame_progress = 0.25323242
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
