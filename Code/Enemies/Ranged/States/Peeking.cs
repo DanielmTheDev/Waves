@@ -46,7 +46,7 @@ public class Peeking : State
                 _navigator.Character.SwitchToTakingCover(_coverPoint);
                 break;
             case NextAction.Reposition:
-                Finder.Instance.RandomFree().Match(
+                Finder.Instance.FreeNearestToPlayer().Match(
                     point => _navigator.Character.SwitchToTakingCover(point),
                     () => _navigator.Character.SwitchToAssaulting());
                 break;

@@ -260,3 +260,7 @@ position = Vector2(2019, 997)
 [node name="CoverPoint2" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(2023, 916)
 scale = Vector2(-1, -1)
+
+[node name="CoverPoint3" parent="CoverPoints" instance=ExtResource("9_6yop6")]
+position = Vector2(592, 292)
+scale = Vector2(-1, -1)

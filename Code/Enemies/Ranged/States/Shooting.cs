@@ -27,7 +27,7 @@ public class Shooting : State
         var distanceToTarget = _target.GlobalPosition.DistanceTo(_enemy.GlobalPosition);
         if (distanceToTarget > _enemy.Profile.ShootRange || _randomTimer.IsDone())
         {
-            Finder.Instance.RandomFree().Match(
+            Finder.Instance.FreeNearestToPlayer().Match(
                 point => _enemy.SwitchToTakingCover(point),
                 () => _enemy.SwitchToAssaulting());
             return;

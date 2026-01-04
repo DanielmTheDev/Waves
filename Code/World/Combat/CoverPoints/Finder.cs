@@ -23,10 +23,25 @@ public sealed partial class Finder : Node
         => All().NearestTo(origin);
 
     public Option<CoverPoint> RandomFree()
-    {
-        var available = AllFree();
-        return available.Length == 0
+        => AllFree().Length == 0
             ? None
-            : Some(available[GD.RandRange(0, available.Length - 1)]);
+            : Some(AllFree()[GD.RandRange(0, AllFree().Length - 1)]);
+
+    public Option<CoverPoint> FreeNearestToPlayer(float maxDistance = 600f)
+    {
+        var player = (Node2D)GetTree().GetFirstNodeInGroup(GroupNames.Player);
+        var freeNodes = AllFree()
+            .Where(n =>
+            {
+                var distanceTo = n.HidingPoint.GlobalPosition.DistanceTo(player.GlobalPosition);
+                GD.Print(distanceTo);
+                return distanceTo <= maxDistance;
+            })
+            .OrderBy(n => n.HidingPoint.GlobalPosition.DistanceTo(player.GlobalPosition))
+            .ToArray();
+
+        return freeNodes.Length() == 0
+            ? None
+            : Some(freeNodes.First());
     }
 }
