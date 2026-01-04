@@ -31,12 +31,7 @@ public sealed partial class Finder : Node
     {
         var player = (Node2D)GetTree().GetFirstNodeInGroup(GroupNames.Player);
         var freeNodes = AllFree()
-            .Where(n =>
-            {
-                var distanceTo = n.HidingPoint.GlobalPosition.DistanceTo(player.GlobalPosition);
-                GD.Print(distanceTo);
-                return distanceTo <= maxDistance;
-            })
+            .Where(n => n.HidingPoint.GlobalPosition.DistanceTo(player.GlobalPosition) <= maxDistance)
             .OrderBy(n => n.HidingPoint.GlobalPosition.DistanceTo(player.GlobalPosition))
             .ToArray();
 

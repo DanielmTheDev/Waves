@@ -58,7 +58,7 @@ Profile = ExtResource("2_f5pa5")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xg1bg")
 autoplay = "default"
-frame_progress = 0.25323242
+frame_progress = 0.81218106
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

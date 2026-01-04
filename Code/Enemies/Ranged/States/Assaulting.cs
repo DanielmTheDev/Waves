@@ -20,7 +20,8 @@ public class Assaulting : State
 
     public override void PhysicsProcess(double delta)
     {
-        if (_navigator.Character.CanClearPath(_target, 10f, PhysicsLayers.World))
+        if (_navigator.Character.CanClearPath(_target, 10f, PhysicsLayers.World)
+            && _navigator.Character.GlobalPosition.DistanceTo(_target.GlobalPosition) < _profile.ShootRange)
         {
             _navigator.Stop();
             _navigator.Character.SwitchToShooting();

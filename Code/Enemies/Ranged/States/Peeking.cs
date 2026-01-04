@@ -1,6 +1,5 @@
 using System;
 using Godot;
-using LanguageExt;
 using Waves.Code.Common;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.States;
@@ -25,7 +24,8 @@ public class Peeking : State
 
     public override void PhysicsProcess(double delta)
     {
-        if (_navigator.Character.CanClearPath(_target, 10f, PhysicsLayers.World))
+        if ( _navigator.Character.CanClearPath(_target, 10f, PhysicsLayers.World)
+            && _navigator.Character.GlobalPosition.DistanceTo(_target.GlobalPosition) < _profile.ShootRange)
         {
             _navigator.Stop();
             _navigator.Character.SwitchToShooting();
