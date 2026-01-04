@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using LanguageExt;
 using Waves.Code.Common;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.States;
@@ -45,8 +46,7 @@ public class Peeking : State
                 _navigator.Character.SwitchToTakingCover(_coverPoint);
                 break;
             case NextAction.Reposition:
-                var freePoint = Finder.Instance.RandomFree();
-                freePoint.Match(
+                Finder.Instance.RandomFree().Match(
                     point => _navigator.Character.SwitchToTakingCover(point),
                     () => _navigator.Character.SwitchToAssaulting());
                 break;

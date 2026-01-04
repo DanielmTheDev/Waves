@@ -1,10 +1,10 @@
 using System.Linq;
 using Godot;
+using LanguageExt;
 using Waves.Code.Common;
 using Waves.Code.Constants;
 using Waves.Code.Enemies.Ranged.Resources;
 using Waves.Code.Enemies.Ranged.States;
-using Waves.Code.Infrastructure;
 using Waves.Code.Players.Projectiles;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
@@ -28,7 +28,9 @@ public partial class RangedEnemy : CharacterBody2D
 		_target = GetTree().GetFirstNodeInGroup(GroupNames.Player) as Node2D;
 		_area2D.BodyEntered += OnBodyEntered;
 		_area2D.AreaEntered += OnBodyEntered;
-		SwitchToTakingCover(Finder.Instance.Nearest(this));
+		Finder.Instance.RandomFree().Match(
+			SwitchToTakingCover,
+			SwitchToAssaulting);
 	}
 
 	public override void _PhysicsProcess(double delta)

@@ -27,7 +27,9 @@ public class Shooting : State
         var distanceToTarget = _target.GlobalPosition.DistanceTo(_enemy.GlobalPosition);
         if (distanceToTarget > _enemy.Profile.ShootRange || _randomTimer.IsDone())
         {
-            _enemy.SwitchToTakingCover(Finder.Instance.Nearest(_enemy));
+            Finder.Instance.RandomFree().Match(
+                point => _enemy.SwitchToTakingCover(point),
+                () => _enemy.SwitchToAssaulting());
             return;
         }
         _shooter.TryShootAt(_target.GlobalPosition);
