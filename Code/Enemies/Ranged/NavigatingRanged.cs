@@ -6,7 +6,7 @@ namespace Waves.Code.Enemies.Ranged;
 public class NavigatingRanged
 {
     public readonly RangedEnemy Character;
-    public readonly NavigationAgent2D Agent;
+    private readonly NavigationAgent2D Agent;
 
     public NavigatingRanged(RangedEnemy character, NavigationAgent2D agent)
     {
@@ -17,7 +17,6 @@ public class NavigatingRanged
     public void MoveTowards(Vector2 target, float speed)
     {
         Agent.SetVelocityToNextTarget(Character, target, speed);
-        Character.LookTowards(Agent.GetNextPathPosition());
         Character.Velocity = Agent.Velocity;
     }
 

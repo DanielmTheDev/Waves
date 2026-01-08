@@ -7,7 +7,6 @@ using Waves.Code.Enemies.Ranged.States;
 using Waves.Code.Players.Projectiles;
 using Waves.Code.States;
 using Waves.Code.World.Combat.CoverPoints;
-using Finder = Waves.Code.World.Combat.CoverPoints.Finder;
 
 namespace Waves.Code.Enemies.Ranged;
 
