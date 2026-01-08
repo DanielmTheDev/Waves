@@ -16,6 +16,7 @@ public partial class RangedEnemy : CharacterBody2D
 	private Area2D _area2D => GetNode<Area2D>(UniqueNames.Area2d);
 	private NavigationAgent2D _agent => GetNode<NavigationAgent2D>(UniqueNames.NavigationAgent2d);
 	private ProjectileShooter _shooter => GetNode<ProjectileShooter>(UniqueNames.ProjectileShooter);
+	private AnimationPlayer _animationPlayer => GetNode<AnimationPlayer>(UniqueNames.AnimationPlayer);
 
 	private State _state;
 	private Node2D _target;
@@ -34,6 +35,7 @@ public partial class RangedEnemy : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		_state.PhysicsProcess(delta);
+		_animationPlayer.PlayMovementAnimation4Directions(Velocity, "walking");
 		MoveAndSlide();
 	}
 

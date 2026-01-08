@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c87a5iidrcjsm"]
+[gd_scene load_steps=19 format=3 uid="uid://c87a5iidrcjsm"]
 
 [ext_resource type="Script" uid="uid://jay5elol12xf" path="res://Code/Enemies/Ranged/RangedEnemy.cs" id="1_1qm41"]
 [ext_resource type="Resource" uid="uid://gg34sk2ujwni" path="res://Resources/sandbox_enemy_profile.tres" id="2_f5pa5"]
@@ -56,6 +56,26 @@ height = 199.99998
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wjb5"]
 size = Vector2(22, 22)
 
+[sub_resource type="Animation" id="Animation_f5pa5"]
+resource_name = "walking_right"
+
+[sub_resource type="Animation" id="Animation_bvp7b"]
+resource_name = "walking_left"
+
+[sub_resource type="Animation" id="Animation_pbmq5"]
+resource_name = "walking_front"
+
+[sub_resource type="Animation" id="Animation_lcaim"]
+resource_name = "walking_back"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kybcg"]
+_data = {
+&"walking_back": SubResource("Animation_lcaim"),
+&"walking_front": SubResource("Animation_pbmq5"),
+&"walking_left": SubResource("Animation_bvp7b"),
+&"walking_right": SubResource("Animation_f5pa5")
+}
+
 [node name="RangedEnemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 21
@@ -66,7 +86,7 @@ Profile = ExtResource("2_f5pa5")
 sprite_frames = SubResource("SpriteFrames_xg1bg")
 animation = &"right"
 autoplay = "right"
-frame_progress = 0.2476945
+frame_progress = 0.06939782
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -94,3 +114,9 @@ unique_name_in_owner = true
 path_desired_distance = 1.0
 path_postprocessing = 1
 debug_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_kybcg")
+}
