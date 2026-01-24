@@ -231,7 +231,7 @@ navigation_visibility_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_d7bho")]
-position = Vector2(2230, 911)
+position = Vector2(1603, 945)
 
 [node name="UserInterface" parent="." instance=ExtResource("4_1cu7a")]
 process_mode = 4

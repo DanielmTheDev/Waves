@@ -42,12 +42,11 @@ public static class AnimationPlayerExtensions
     }
 
     private static string GetAnimationName4Directions(string type, Vector2 direction)
-    {
-        if (Mathf.Abs(direction.X) > Mathf.Abs(direction.Y))
-        {
-            return direction.X > 0 ? $"{type}_right" : $"{type}_left";
-        }
-
-        return direction.Y > 0 ? $"{type}_front" : $"{type}_back";
-    }
+        => Mathf.Abs(direction.X) > Mathf.Abs(direction.Y)
+            ? direction.X > 0
+                ? $"{type}_right"
+                : $"{type}_left"
+            : direction.Y > 0
+                ? $"{type}_front"
+                : $"{type}_back";
 }
