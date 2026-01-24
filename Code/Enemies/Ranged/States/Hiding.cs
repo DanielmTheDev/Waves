@@ -27,6 +27,6 @@ public class Hiding : State
     }
 
     public override void Exit()
-        => _coverPoint.Free();
+        => _coverPoint.UnOccupy();
 }
 

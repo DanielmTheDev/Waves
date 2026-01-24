@@ -269,29 +269,36 @@ metadata/_edit_lock_ = true
 
 [node name="CoverPoint" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(796, 337)
+ShootDistance = 170.0
 
 [node name="CoverPoint2" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(790, 221)
 scale = Vector2(-1, -1)
+ShootDistance = 116.0
 
 [node name="CoverPoint3" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(1379, 349)
 scale = Vector2(-1, -1)
+ShootDistance = 50.0
 
 [node name="CoverPoint5" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(1822, 992)
 scale = Vector2(-1, -1)
+ShootDistance = 60.0
 
 [node name="CoverPoint6" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(2147, 876)
 scale = Vector2(-1, -1)
+ShootDistance = 150.0
 
 [node name="CoverPoint7" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(2144, 983)
 rotation = 3.1415927
 scale = Vector2(-1, -1)
+ShootDistance = 150.0
 
 [node name="CoverPoint4" parent="CoverPoints" instance=ExtResource("9_6yop6")]
 position = Vector2(1565, 734)
 rotation = 1.5707964
 scale = Vector2(-1, -1)
+ShootDistance = 80.0
