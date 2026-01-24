@@ -26,13 +26,14 @@ public partial class Spawner : Node
 
     private void SpawnEnemies()
     {
-        var spawnPoints = SpawnPoints();
+        var spawnPoints = ActiveSpawnPoints();
         var numberOfEnemiesToSpawn = NrEnemiesToSpawn(spawnPoints);
         SpawnEnemies(numberOfEnemiesToSpawn, spawnPoints);
     }
 
-    private Stack<SpawnPoint> SpawnPoints()
+    private Stack<SpawnPoint> ActiveSpawnPoints()
         => new(this.GetNodesInGroup<SpawnPoint>(GroupNames.SpawnPoint)
+            .Where(sp => sp.IsActive)
             .OrderBy(_ => _rng.Randi()));
 
     private int NrEnemiesToSpawn(Stack<SpawnPoint> spawnPoints)
